@@ -1,0 +1,220 @@
+<template>
+  <div class="bbox">
+    <div class="nav">个人中心</div>
+    <div class="boxone">
+      <div class="headimg">
+        <img src="@/assets/auther.png" alt />
+      </div>
+      <div class="headname">
+        <!-- <div> -->
+        <span class="nameone">用户名称</span>
+        <span class="nametwo">已认证</span>
+        <!-- </div> -->
+        <div class="namethree">ID:0000000000</div>
+      </div>
+    </div>
+    <div class="boxtwo">
+      <div class="two-title">我的资产</div>
+      <div class="two-item">总资产折合（USDT）</div>
+      <div class="two-item-num">
+        <div>3000.00</div>
+        <div class="bgi-fan"></div>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div class="menu">
+      <div class="menuitem" v-for="(item,index) in menulist" :key="index" @click="clickitem(item)">
+        <img :src="item.img" alt />
+        <div class="menuitem-name">{{item.name}}</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      menulist: [
+        {
+          img: require("@/assets/m1.png"),
+          name: "邀请好友"
+        },
+        {
+          img: require("@/assets/m2.png"),
+          name: "身份认证"
+        },
+        {
+          img: require("@/assets/m3.png"),
+          name: "转账"
+        },
+        {
+          img: require("@/assets/m4.png"),
+          name: "收款"
+        },
+        {
+          img: require("@/assets/m5.png"),
+          name: "推荐有奖"
+        },
+        {
+          img: require("@/assets/m6.png"),
+          name: "团队"
+        },
+        {
+          img: require("@/assets/m7.png"),
+          name: "反馈"
+        },
+        {
+          img: require("@/assets/m8.png"),
+          name: "新手帮助"
+        },
+        {
+          img: require("@/assets/m9.png"),
+          name: "设置"
+        },
+        {
+          img: require("@/assets/m10.png"),
+          name: "工会"
+        }
+      ]
+    };
+  },
+  mounted() {},
+  methods: {
+    clickitem(item) {
+      alert(item.name);
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+* {
+  // color: #fff;
+}
+.bbox {
+  // position: fixed;
+  height: 92vh;
+  overflow: scroll;
+}
+.nav {
+  width: 100%;
+  height: 6vh;
+ color: #FFF;
+  font-weight: 600;
+  line-height: 6vh;
+  // font-size: 0.875rem;
+  background: linear-gradient(
+    to right,
+    rgb(198, 255, 221),
+    rgb(251, 215, 134),
+    rgb(247, 121, 125)
+  );
+
+  // border: 1px solid red;
+}
+.boxone {
+  width: 100%;
+  padding: 20px 0px;
+  // padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .headimg {
+    width: 50px;
+    margin-left: 10%;
+    margin-right: 6px;
+    img {
+      width: 100%;
+    }
+  }
+  .headname {
+    padding: 6px;
+    text-align: left;
+    .nameone {
+      font-size: 12px;
+      // color: #fefefe;
+      // border: 1px solid red;
+    }
+    .nametwo {
+      font-size: 8px;
+      padding: 0px 4px;
+      margin-left: 6px;
+      border-radius: 10%;
+      color: #ffcc03;
+      border: 1px solid #ffcc03;
+    }
+    .namethree {
+      font-size: 10px;
+      padding: 4px 0px;
+      color: #e4e4e4;
+    }
+  }
+}
+.boxtwo {
+  width: 100%;
+  padding: 0px 0px 30px 0px;
+  // margin-top: 50px;
+  text-align: left;
+  .two-title {
+    width: 40%;
+    margin-left: 10%;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .two-item {
+    width: 40%;
+    margin-left: 10%;
+    padding: 4px 0px;
+    font-size: 10px;
+    color: #bcbcc4;
+  }
+  .two-item-num {
+    // width: 100%;
+    // width: 40%;
+    margin-left: 10%;
+    font-size: 14px;
+    position: relative;
+    color: #bcbcc4;
+    .bgi-fan {
+      width: 14px;
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      right: 34px;
+      background-image: url("~@/assets/next.png");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+  // & > div{
+
+  //   width: 40%;
+  //   margin-left: 10%;
+  // }
+}
+.hr {
+  width: 100%;
+  height: 2vh;
+  background-color: #1b1b21;
+}
+.menu {
+  display: flex;
+  // justify-content: space-around;
+  // justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #b5b5b5;
+  .menuitem {
+    width: 16%;
+
+    margin: 20px 4.5% 20px 4.5%;
+    img {
+      width: 56%;
+    }
+    .menuitem-name {
+      font-size: 10px;
+    }
+  }
+}
+</style>
