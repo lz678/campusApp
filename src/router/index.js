@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import {getStore} from '@/utils/index.js'
+import {Toast} from 'vant'
 Vue.use(VueRouter)
 
 const routes = [
@@ -123,6 +124,18 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
-
+// 权限配置
+// router.beforeEach((to, from, next) => {
+//   const token=getStore('token')
+ 
+//  const isOpen = to.meta.isOpen
+// //   const stoToken = store.state.token
+//  if (!isOpen) {
+//    Toast('暂未开放，敬请期待！')
+//    next(false)
+//    console.log(1111);
+//  }else{
+//    next()
+//  }
+// })
 export default router
