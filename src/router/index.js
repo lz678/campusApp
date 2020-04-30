@@ -21,7 +21,7 @@ const routes = [
     component: () => import('@/views/register.vue'),
     meta:{
       name:'注册',
-      isOpen:false
+      isOpen:true
     }
   },
   {

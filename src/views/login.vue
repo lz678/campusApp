@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import {setStore} from '@/utils/index.js'
 export default {
   data() {
     return {
@@ -50,6 +51,7 @@ export default {
           this.$toast(data.Msg)
           if (data.code == 1) {
             // this.$toast(data.Msg)
+            setStore('token',123)
             this.$router.push('/tabbar/campus')
           }
           // this.$toast(data.Msg)
