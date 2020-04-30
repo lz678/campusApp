@@ -1,8 +1,14 @@
 <template>
   <div class="bbox">
     <div class="nav">书架</div>
-  
-   
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe-item v-for="(item,index) in swipe" :key="index">
+        <img :src="item.url" alt />
+      </van-swipe-item>
+    </van-swipe>
+    <div class="menu">
+      <div></div>
+    </div>
   </div>
 </template>
 
@@ -11,26 +17,29 @@ import echarts from "echarts";
 export default {
   data() {
     return {
-     
+      swipe: [
+        {
+          url: require("@/assets/lunbo.png")
+        },
+        {
+          url: require("@/assets/lunbo.png")
+        }
+      ]
     };
   },
-  methods: {
-   
-  },
-  mounted() {
-   
-  }
+  methods: {},
+  mounted() {}
 };
 </script>
 
 <style lang="scss" scoped>
-* {
-  // color: #fff;
-}
+// * {
+// color: #fff;
+// }
 .nav {
   width: 100%;
   height: 6vh;
- color: #FFF;
+  color: #fff;
   font-weight: 600;
   line-height: 6vh;
   // font-size: 0.875rem;
@@ -45,5 +54,12 @@ export default {
   height: 92vh;
   overflow: scroll;
 }
- 
+.my-swipe {
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 1vh;
+  img {
+    width: 100%;
+  }
+}
 </style>

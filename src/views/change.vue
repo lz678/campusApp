@@ -7,85 +7,7 @@
 <script>
 export default {
   data() {
-    return {
-      list: [
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "-12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "-12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "-12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "-12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "-12%"
-        },
-        {
-          name: "USDT",
-          price: "12￥",
-          rate: "12%"
-        }
-      ]
-    };
+    return {};
   }
 };
 </script>
@@ -101,8 +23,8 @@ export default {
   .nav {
     width: 100%;
     height: 6vh;
-    color: #FFF;
-  font-weight: 600;
+    color: #fff;
+    font-weight: 600;
     line-height: 6vh;
     background: linear-gradient(
       to right,

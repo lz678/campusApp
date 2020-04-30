@@ -82,7 +82,7 @@ export default {
   // background-color: #E4F1C6;
   // background-color: #1B1B21;
   bottom: 0px;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #b4b4b4;
   display: flex;
   justify-content: space-around;
   align-items: center;

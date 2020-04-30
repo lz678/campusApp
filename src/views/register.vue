@@ -23,7 +23,7 @@
     </div>
 
     <!-- </van-cell-group> -->
-    <div class="btn">注册</div>
+    <div class="btn" @click="register">注册</div>
   </div>
 </template>
 
@@ -32,9 +32,18 @@ export default {
   data() {
     return {
       value: "",
-      bgimg: "url(" + require("@/assets/BJ.png") + ")"
+      // bgimg: "url(" + require("@/assets/BJ.png") + ")"
     };
-  }
+  },
+  methods: {
+    register(){
+      this.$api.userRegister({
+        params:{
+          
+        }
+      })
+    }
+  },
 };
 </script>
 
@@ -45,7 +54,7 @@ export default {
   overflow: scroll;
   position: absolute;
   //  background-image: url(require('~@/assets/BJ.png'));
-  background-image: url("~@/assets/BJ.png");
+  // background-image: url("~@/assets/BJ.png");
   // background-repeat: no-repeat;
   // background-position: center;
   background-size: cover;

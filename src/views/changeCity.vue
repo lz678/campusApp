@@ -6,12 +6,12 @@
       :active-id.sync="activeId"
       :main-active-index.sync="activeIndex"
     />-->
-    <van-area :area-list="areaList" @confirm="make" @cancel="cancel" columns-num=2 title="城市" />
+    <van-area :area-list="areaList" @confirm="make" @cancel="cancel" columns-num="2" title="城市" />
   </div>
 </template>
 
 <script>
-import {setStore,getStore} from "@/utils/index.js"
+import { setStore, getStore } from "@/utils/index.js";
 export default {
   data() {
     return {
@@ -422,7 +422,7 @@ export default {
           810300: "新界",
           820100: "澳门半岛",
           820200: "离岛"
-        },
+        }
         // county_list: {
         //   110101: "东城区",
         //   110102: "西城区",
@@ -436,21 +436,20 @@ export default {
         //   // ....
         // }
       }
-      
     };
   },
   methods: {
-      make(a){
-          console.log(a);
-          console.log(a[1]);
-          setStore('city',a[1])
-          console.log(getStore('city').name);
-          this.$router.go(-1)
-      },
-      cancel(){
-        this.$router.go(-1)
-      }
-  },
+    make(a) {
+      console.log(a);
+      console.log(a[1]);
+      setStore("city", a[1]);
+      console.log(getStore("city").name);
+      this.$router.go(-1);
+    },
+    cancel() {
+      this.$router.go(-1);
+    }
+  }
 };
 </script>
 

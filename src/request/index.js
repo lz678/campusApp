@@ -3,15 +3,20 @@ import Router from '@/router/index.js'
 import {getStore,removeStore} from '@/utils/index.js'
 // import {getStore} from '@/utils/index.js'
 //设置全局请求路径
-axios.defaults.baseURL='http://yanbiwang.fulishijie.top/'
+axios.defaults.baseURL='http://lzapi.lll1.vip:3000/'
+// axios.defaults.baseURL='http://localhost:3000/'
+// axios.defaults.baseURL='http://yanbiwang.fulishijie.top/api/'
 //设置请求超时时间
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+// axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.timeout=10000
 const reg=/^(http|https)/
 //axios请求拦截器（request）
 axios.interceptors.request.use(
     // 在请求发送之前做一些事
+     
+    
     config => {
+      
       if (!reg.test(config.url)) {
         // config.url = host + '/api/' + config.url
   

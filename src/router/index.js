@@ -20,7 +20,7 @@ const routes = [
     component: () => import('@/views/register.vue'),
     meta:{
       name:'注册',
-      isOpen:true
+      isOpen:false
     }
   },
   {
@@ -36,10 +36,10 @@ const routes = [
     path: '/',
     redirect: '/tabbar/campus',
     component: () => import('@/tabbar/index.vue'),
-    meta:{
-      name:'个人',
-      isOpen:true
-    }
+    // meta:{
+    //   name:'个人',
+    //   isOpen:true
+    // }
   },
   {
     path: '/tabbar',
@@ -61,7 +61,7 @@ const routes = [
         component: () => import('@/views/bookcase.vue'),
         meta:{
           name:'书架',
-          isOpen:true
+          isOpen:false
         }
       },
       {

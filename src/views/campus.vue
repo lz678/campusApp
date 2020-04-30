@@ -29,11 +29,6 @@
         </template>
       </van-cell>
     </div>
-    <!-- <van-tree-select
-      :items="items"
-      :active-id.sync="activeId"
-      :main-active-index.sync="activeIndex"
-    />-->
   </div>
 </template>
 
@@ -45,7 +40,7 @@ export default {
     return {
       checklist: [
         { name: "历史上的今天", path: "/history" },
-        { name: "今日天气", path: "/register" },
+        { name: "今日天气", path: "/login" },
         { name: "添加行程", path: "/register" }
       ],
       opinionData: [],
@@ -53,31 +48,7 @@ export default {
       // opinio:[1,2,3],
       now: "",
       weather: "",
-      city: getStore("city").name||"北京"
-      //       areaList:{
-      //   province_list: {
-      //     110000: '北京市',
-      //     120000: '天津市'
-      //   },
-      //   city_list: {
-      //     110100: '北京市',
-      //     110200: '县',
-      //     120100: '天津市',
-      //     120200: '县'
-      //   },
-      //   county_list: {
-      //     110101: '东城区',
-      //     110102: '西城区',
-      //     110105: '朝阳区',
-      //     110106: '丰台区',
-      //     120101: '和平区',
-      //     120102: '河东区',
-      //     120103: '河西区',
-      //     120104: '南开区',
-      //     120105: '河北区',
-
-      //   }
-      // }
+      city: getStore("city").name || "北京"
     };
   },
   methods: {
@@ -87,9 +58,12 @@ export default {
     getweather(city) {
       const me = [];
       this.axios
-        .get(
-          `https://free-api.heweather.net/s6/weather/forecast?location=${city}&key=54fe7c4881b942b9b2b32ae14bd7ec54`
-        )
+        .get("https://free-api.heweather.net/s6/weather/forecast", {
+          params: {
+            location: this.city,
+            key: "54fe7c4881b942b9b2b32ae14bd7ec54"
+          }
+        })
         .then(data => {
           // console.log(data.HeWeather6[0].daily_forecast);
           data.HeWeather6[0].daily_forecast.forEach(item => {
@@ -215,6 +189,7 @@ export default {
   // position: fixed;
   height: 92vh;
   overflow: scroll;
+  background-color: #fff;
 }
 // .my-swipe {
 //   width: 96%;
@@ -281,6 +256,9 @@ export default {
 }
 .icolor {
   color: orange;
+}
+.van-cell {
+  background: transparent;
 }
 // .upimgbox {
 //   width: 14px;

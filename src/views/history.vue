@@ -11,6 +11,10 @@ export default {
     return {};
   },
   methods: {
+    webs(){
+       
+    },
+
     getinformation() {
     //   this.axios
     //   .post("https://v.juhe.cn/toutiao/index?type=top&key='51d3f2baa25bc61f31ad93f5572fa79a'",
@@ -26,12 +30,12 @@ export default {
       //     day: 1
       //   };
       this.axios
-        .get("http://v.juhe.cn/toutiao/index", {
+        .get("http://api.juheapi.com/japi/toh", {
           params: {
-            key: "51d3f2baa25bc61f31ad93f5572fa79a",
-            // v: "1.0",
-            // month: 10,
-            // day: 1
+            key: "0629b4f94ed419ad3ea56ce5429020f4",
+            v: "1.0",
+            month: 10,
+            day: 1
           }
         })
         .then(data => {

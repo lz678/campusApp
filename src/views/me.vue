@@ -7,15 +7,15 @@
       </div>
       <div class="headname">
         <!-- <div> -->
-        <span class="nameone">用户名称</span>
+        <span class="nameone">昵称：小汪汪</span>
         <span class="nametwo">已认证</span>
         <!-- </div> -->
-        <div class="namethree">ID:0000000000</div>
+        <div class="namethree">ID:1611020013</div>
       </div>
     </div>
     <div class="boxtwo">
       <div class="two-title">我的资产</div>
-      <div class="two-item">总资产折合（USDT）</div>
+      <div class="two-item">金币</div>
       <div class="two-item-num">
         <div>3000.00</div>
         <div class="bgi-fan"></div>
@@ -23,10 +23,10 @@
     </div>
     <div class="hr"></div>
     <div class="menu">
-      <div class="menuitem" v-for="(item,index) in menulist" :key="index" @click="clickitem(item)">
+      <!-- <div class="menuitem" v-for="(item,index) in menulist" :key="index" @click="clickitem(item)">
         <img :src="item.img" alt />
         <div class="menuitem-name">{{item.name}}</div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -37,43 +37,43 @@ export default {
     return {
       menulist: [
         {
-          img: require("@/assets/m1.png"),
+          // img: require("@/assets/m1.png"),
           name: "邀请好友"
         },
         {
-          img: require("@/assets/m2.png"),
+          // img: require("@/assets/m2.png"),
           name: "身份认证"
         },
         {
-          img: require("@/assets/m3.png"),
+          // img: require("@/assets/m3.png"),
           name: "转账"
         },
         {
-          img: require("@/assets/m4.png"),
+          // img: require("@/assets/m4.png"),
           name: "收款"
         },
         {
-          img: require("@/assets/m5.png"),
+          // img: require("@/assets/m5.png"),
           name: "推荐有奖"
         },
         {
-          img: require("@/assets/m6.png"),
+          // img: require("@/assets/m6.png"),
           name: "团队"
         },
         {
-          img: require("@/assets/m7.png"),
+          // img: require("@/assets/m7.png"),
           name: "反馈"
         },
         {
-          img: require("@/assets/m8.png"),
+          // img: require("@/assets/m8.png"),
           name: "新手帮助"
         },
         {
-          img: require("@/assets/m9.png"),
+          // img: require("@/assets/m9.png"),
           name: "设置"
         },
         {
-          img: require("@/assets/m10.png"),
+          // img: require("@/assets/m10.png"),
           name: "工会"
         }
       ]
@@ -147,7 +147,7 @@ export default {
     .namethree {
       font-size: 10px;
       padding: 4px 0px;
-      color: #e4e4e4;
+      // color: #e4e4e4;
     }
   }
 }
@@ -197,7 +197,7 @@ export default {
 .hr {
   width: 100%;
   height: 2vh;
-  background-color: #1b1b21;
+  background-color: #e7e4e4;
 }
 .menu {
   display: flex;

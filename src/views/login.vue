@@ -6,18 +6,18 @@
     </div>
     <!-- <van-cell-group> -->
     <div class="inputbox">
-      <div class="title">手机号</div>
-      <van-field v-model="value" placeholder="请输入您的手机号" />
+      <div class="title">账号</div>
+      <van-field v-model="user" placeholder="请输入您的手机号" />
       <!-- <div class="title">验证码</div>
       <van-field v-model="value" placeholder="请输入您的验证码" />-->
       <div class="title">登录密码</div>
-      <van-field v-model="value" placeholder="请设置您的密码" />
+      <van-field v-model="pwd" placeholder="请设置您的密码" />
 
       <div class="forget">忘记密码？</div>
     </div>
 
     <!-- </van-cell-group> -->
-    <div class="btn">登录</div>
+    <div class="btn" @click="login">登录</div>
   </div>
 </template>
 
@@ -25,9 +25,36 @@
 export default {
   data() {
     return {
-      value: "",
+      user: "",
+      pwd: "",
       bgimg: "url(" + require("@/assets/BJ.png") + ")"
     };
+  },
+  methods: {
+    login() {
+      let username = this.user;
+      let password = this.pwd;
+      this.$api
+        .userLogin({
+          // get方法
+          params: {
+            account: this.user,
+            password: this.pwd
+          }
+          //post方法
+          //  account: this.user,
+          //   password: this.pwd
+        })
+        .then(data => {
+          console.log(data);
+          this.$toast(data.Msg)
+          if (data.code == 1) {
+            // this.$toast(data.Msg)
+            this.$router.push('/tabbar/campus')
+          }
+          // this.$toast(data.Msg)
+        });
+    }
   }
 };
 </script>
@@ -37,13 +64,12 @@ export default {
   width: 100%;
   height: 100vh;
   overflow: scroll;
-
   position: absolute;
   //  background-image: url(require('~@/assets/BJ.png'));
-  background-image: url("~@/assets/BJ.png");
+  // background-image: url("~@/assets/BJ.png");
   // background-repeat: no-repeat;
   // background-position: center;
-   background-size: cover;
+  background-size: cover;
   //  background-image: 'url('+require('@/assets/BJ.png')+')';
   // :style="{backgroundImage:'url('+require('@/assets/BJ.png')+')'}"
   .type {
