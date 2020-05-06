@@ -39,9 +39,10 @@ export default {
   data() {
     return {
       checklist: [
+        { name: "今日天气", path: "/today" },
+        { name: "热门景点", path: "/tourism" },
+        { name: "推荐歌曲", path: "/music" },
         { name: "历史上的今天", path: "/history" },
-        { name: "今日天气", path: "/login" },
-        { name: "添加行程", path: "/register" }
       ],
       opinionData: [],
       opinion: [],
@@ -65,13 +66,12 @@ export default {
           }
         })
         .then(data => {
+          // console.log(data);
           // console.log(data.HeWeather6[0].daily_forecast);
           data.HeWeather6[0].daily_forecast.forEach(item => {
             this.opinionData.push(item.tmp_max);
-
             this.opinion.push(item.date.substr(5));
           });
-          // console.log(this.opinionData, 5656);
           this.drawLine();
         });
       this.axios

@@ -62,7 +62,7 @@ const routes = [
         component: () => import('@/views/bookcase.vue'),
         meta:{
           name:'书架',
-          isOpen:false
+          isOpen:true
         }
       },
       {
@@ -109,6 +109,33 @@ const routes = [
     component: () => import('@/views/changeCity.vue'),
     meta:{
       name:'更换城市',
+      isOpen:true
+    }
+  },
+  {
+    path: '/today',
+    name: 'today',
+    component: () => import('@/views/today.vue'),
+    meta:{
+      name:'天气详情',
+      isOpen:true
+    }
+  },
+  {
+    path: '/tourism',
+    name: 'tourism',
+    component: () => import('@/views/tourism.vue'),
+    meta:{
+      name:'热门景点',
+      isOpen:true
+    }
+  },
+  {
+    path: '/music',
+    name: 'music',
+    component: () => import('@/views/music.vue'),
+    meta:{
+      name:'推荐歌曲',
       isOpen:true
     }
   },

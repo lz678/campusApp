@@ -11,7 +11,7 @@
       <!-- <div class="title">验证码</div>
       <van-field v-model="value" placeholder="请输入您的验证码" />-->
       <div class="title">登录密码</div>
-      <van-field v-model="pwd" placeholder="请设置您的密码" />
+      <van-field v-model="pwd" type="password" placeholder="请设置您的密码" />
 
       <div class="forget">忘记密码？</div>
     </div>
@@ -48,7 +48,11 @@ export default {
         })
         .then(data => {
           console.log(data);
-          this.$toast(data.Msg)
+          // this.$toast(data.Msg)
+          this.$toast({
+            message:data.Msg,
+            duration:1000
+          })
           if (data.code == 1) {
             // this.$toast(data.Msg)
             setStore('token',123)
@@ -72,6 +76,7 @@ export default {
   // background-repeat: no-repeat;
   // background-position: center;
   background-size: cover;
+  background-color: #fff;
   //  background-image: 'url('+require('@/assets/BJ.png')+')';
   // :style="{backgroundImage:'url('+require('@/assets/BJ.png')+')'}"
   .type {

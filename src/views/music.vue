@@ -1,6 +1,6 @@
 <template>
   <div class="bbox">
-    <div class="nav">置换</div>
+    <div class="nav">推荐音乐</div>
   </div>
 </template>
 

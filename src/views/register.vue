@@ -58,6 +58,7 @@ export default {
   // background-repeat: no-repeat;
   // background-position: center;
   background-size: cover;
+  background-color: #fff;
   // background-size: contain;
   //  background-image: 'url('+require('@/assets/BJ.png')+')';
   // :style="{backgroundImage:'url('+require('@/assets/BJ.png')+')'}"

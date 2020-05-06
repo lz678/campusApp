@@ -16,42 +16,28 @@ export default {
     },
 
     getinformation() {
-    //   this.axios
-    //   .post("https://v.juhe.cn/toutiao/index?type=top&key='51d3f2baa25bc61f31ad93f5572fa79a'",
-
-    //   )
-    //   .then(data => {
-    //     console.log(data);
-    //   })
-      //   let param = {
-      //     key: "0629b4f94ed419ad3ea56ce5429020f4",
-      //     v: "1.0",
-      //     month: 10,
-      //     day: 1
-      //   };
-      this.axios
-        .get("http://api.juheapi.com/japi/toh", {
-          params: {
-            key: "0629b4f94ed419ad3ea56ce5429020f4",
-            v: "1.0",
-            month: 10,
-            day: 1
-          }
-        })
-        .then(data => {
-          console.log(data);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+      
+      // this.axios
+      //   .get("", {
+      //     params: {
+             
+      //       channel: '头条',
+      //       num: '10',
+      //       start: '0',
+      //       appkey: "e372dc9924a53757c01a6394036ee2d5"
+      //     }
+      //   })
+      //   .then(data => {
+      //     console.log(data);
+      //   })
+      //   .catch(function(error) {
+      //     console.log(error);
+      //   });
     }
   },
   created() {
-    this.getinformation();
-    //   getinformation(){
-    //   this.axios.post('http://api.juheapi.com/japi/toh',{
-    //   })
-    //   }
+    // this.getinformation();
+    
   }
 };
 </script>

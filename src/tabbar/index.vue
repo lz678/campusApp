@@ -81,6 +81,7 @@ export default {
   position: fixed;
   // background-color: #E4F1C6;
   // background-color: #1B1B21;
+  background-color: #fff;
   bottom: 0px;
   border-top: 1px solid #b4b4b4;
   display: flex;

@@ -9,7 +9,12 @@ router.beforeEach((to, from, next) => {
   const ishavetoken = getStore('token')
   const isopen = to.meta.isOpen
   if (!isopen) {
-    Toast('暂未开放！')
+    // Toast('暂未开放！')
+    // Toast({
+    //   message:'暂未开放！',
+    //   duration:500
+    // })
+
     next(false)
   } else if (list.includes(to.name)) {
     next()

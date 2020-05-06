@@ -7,13 +7,13 @@
       </van-swipe-item>
     </van-swipe>
     <div class="menu">
-      <div></div>
+      <div v-for="(item,index) in menulist" :key="index">{{item.name}}</div>
     </div>
   </div>
 </template>
 
 <script>
-import echarts from "echarts";
+// import echarts from "echarts";
 export default {
   data() {
     return {
@@ -24,6 +24,17 @@ export default {
         {
           url: require("@/assets/lunbo.png")
         }
+      ],
+      menulist:[
+        {
+          name:'建筑'
+        },
+        {
+          name:'英语'
+        },
+        {
+          name:'小说'
+        }
       ]
     };
   },
@@ -33,9 +44,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// * {
-// color: #fff;
-// }
+ 
 .nav {
   width: 100%;
   height: 6vh;
@@ -53,13 +62,21 @@ export default {
 .bbox {
   height: 92vh;
   overflow: scroll;
+  background-color: #fff;
 }
 .my-swipe {
   width: 96%;
+  height: 24vh;
   margin: 0 auto;
   margin-top: 1vh;
   img {
     width: 100%;
   }
+}
+.menu{
+  width: 100%;
+  height: 61vh;
+  
+  // border: 1px solid red  
 }
 </style>

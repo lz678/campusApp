@@ -96,6 +96,7 @@ export default {
   // position: fixed;
   height: 92vh;
   overflow: scroll;
+  background-color: #fff;
 }
 .nav {
   width: 100%;
