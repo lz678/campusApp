@@ -23,15 +23,49 @@
     </div>
     <div class="hr"></div>
     <div class="menu">
+      <van-cell-group class="cellbox">
+        <van-cell title-class="type" title="联系方式" is-link to="/contact">
+          <div slot="icon" class="iconbox">
+            <img src="@/assets/me_auth.png" alt />
+          </div>
+        </van-cell>
+        <!-- <van-cell title-class="type" title="意见反馈" is-link>
+          <div slot="icon" class="iconbox">
+            <img src="@/assets/me_fb.png" alt />
+          </div>
+        </van-cell> -->
+        <van-cell title-class="type" title="我的设置" is-link to="/set">
+          <div slot="icon" class="iconbox">
+            <img src="@/assets/my_set.png" alt />
+          </div>
+        </van-cell>
+        <!-- <van-cell title-class="type" title="系统公告" is-link>
+          <div slot="icon" class="iconbox">
+            <img src="@/assets/xitong.png" alt />
+          </div>
+        </van-cell> -->
+        <van-cell title-class="type" title="关于我们" is-link to="/aboutUs">
+          <div slot="icon" class="iconbox">
+            <img src="@/assets/me_about.png" alt />
+          </div>
+        </van-cell>
+        <van-cell title-class="type" title="退出" is-link @click="quite">
+          <div slot="icon" class="iconbox">
+            <img src="@/assets/me_dividend.png" alt />
+          </div>
+        </van-cell>
+      </van-cell-group>
+
       <!-- <div class="menuitem" v-for="(item,index) in menulist" :key="index" @click="clickitem(item)">
         <img :src="item.img" alt />
         <div class="menuitem-name">{{item.name}}</div>
-      </div> -->
+      </div>-->
     </div>
   </div>
 </template>
 
 <script>
+import {removeStore} from '@/utils/index.js'
 export default {
   data() {
     return {
@@ -83,15 +117,17 @@ export default {
   methods: {
     clickitem(item) {
       alert(item.name);
+    },
+    quite(){
+      removeStore('token')
+      this.$router.push('/login')
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-* {
-  // color: #fff;
-}
+ 
 .bbox {
   // position: fixed;
   height: 92vh;
@@ -101,7 +137,7 @@ export default {
 .nav {
   width: 100%;
   height: 6vh;
- color: #FFF;
+  color: #fff;
   font-weight: 600;
   line-height: 6vh;
   // font-size: 0.875rem;
@@ -201,11 +237,27 @@ export default {
   background-color: #e7e4e4;
 }
 .menu {
-  display: flex;
+  // display: flex;
   // justify-content: space-around;
   // justify-content: space-between;
-  flex-wrap: wrap;
-  background-color: #b5b5b5;
+  // flex-wrap: wrap;
+  // background-color: #b5b5b5;
+  .cellbox {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .type {
+    text-align: left;
+    padding: 0px 16px;
+  }
+  .iconbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.2rem;
+    img {
+      width: 100%;
+    }
+  }
   .menuitem {
     width: 16%;
 

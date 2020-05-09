@@ -38,8 +38,8 @@ export default {
         //   xicon: require("@/assets/3.png")
         // },
         {
-          name: "置换",
-          path: "/tabbar/change",
+          name: "出售",
+          path: "/tabbar/sale",
           icon: require("@/assets/zhihuan1.png"),
           xicon: require("@/assets/zhihuan.png")
         },
@@ -66,7 +66,7 @@ export default {
  <style lang="scss" scoped>
   
 .imgbox {
-  width: 24px;
+  width: 1.5rem;
   margin: 0 auto;
   img {
     width: 100%;
@@ -83,7 +83,7 @@ export default {
   // background-color: #1B1B21;
   background-color: #fff;
   bottom: 0px;
-  border-top: 1px solid #b4b4b4;
+  border-top: 1px solid #e6e4e4;
   display: flex;
   justify-content: space-around;
   align-items: center;

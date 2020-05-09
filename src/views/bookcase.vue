@@ -7,7 +7,24 @@
       </van-swipe-item>
     </van-swipe>
     <div class="menu">
-      <div v-for="(item,index) in menulist" :key="index">{{item.name}}</div>
+      <div
+        class="menuitem"
+        v-for="(item,index) in menulist"
+        :key="index"
+        @click="change(item)"
+      >{{item.name}}</div>
+    </div>
+    <div class="menulist">
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+        <div class="listitem" v-for="(item,index) in list" :key="index" @click="check(item)">
+          <div class="boxL">
+            <div class="Lname">{{item.name}}</div>
+            <div class="Lprice">{{item.phone}}</div>
+          </div>
+
+          <div class="boxR">{{item.price}}</div>
+        </div>
+      </van-pull-refresh>
     </div>
   </div>
 </template>
@@ -17,6 +34,7 @@
 export default {
   data() {
     return {
+      isLoading: false,
       swipe: [
         {
           url: require("@/assets/lunbo.png")
@@ -25,26 +43,89 @@ export default {
           url: require("@/assets/lunbo.png")
         }
       ],
-      menulist:[
+      menulist: [
         {
-          name:'建筑'
+          name: "工学"
         },
         {
-          name:'英语'
+          name: "理学"
         },
         {
-          name:'小说'
+          name: "农学"
+        },
+        {
+          name: "医学"
+        },
+
+        {
+          name: "机械学"
+        },
+        {
+          name: "经济学"
+        },
+        {
+          name: "教育学"
+        },
+        {
+          name: "哲学"
+        }
+      ],
+      list: [
+        {
+          name: "马克思主义",
+          phone: 15183848167,
+          price: "10元"
+        },
+        {
+          name: "毛概",
+          phone: 15183848167,
+          price: "10元"
+        },
+        {
+          name: "大学英语（一）",
+          phone: 15183848167,
+          price: "10元"
+        },
+        {
+          name: "大学英语（二）",
+          phone: 15183848167,
+          price: "10元"
+        },
+        {
+          name: "公共体育",
+          phone: 15183848167,
+          price: "10元"
+        },
+        {
+          name: "马克思主义",
+          phone: 15183848167,
+          price: "10元"
+        },
+        {
+          name: "马克思主义",
+          phone: 15183848167,
+          price: "10元"
         }
       ]
     };
   },
-  methods: {},
+  methods: {
+    change(item) {
+      console.log(item.name);
+    },
+    check(item) {
+      console.log(item);
+    },
+    onRefresh() {
+      this.$toast("刷新成功！");
+      this.isLoading = false;
+    }
+  },
   mounted() {}
 };
 </script>
 
 <style lang="scss" scoped>
- 
 .nav {
   width: 100%;
   height: 6vh;
@@ -73,10 +154,52 @@ export default {
     width: 100%;
   }
 }
-.menu{
+.menu {
   width: 100%;
-  height: 61vh;
-  
-  // border: 1px solid red  
+  padding: 10px 0px;
+  height: 12vh;
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ffcc03;
+  .menuitem {
+    width: 20%;
+    height: 4vh;
+    line-height: 4vh;
+    margin: 6px 2% 6px 2%;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    border: 1px solid #ffcc03;
+  }
+}
+.menulist {
+  width: 100%;
+  height: 45vh;
+  overflow: scroll;
+  .listitem {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.375rem 0px;
+    border-bottom: 1px solid #e9e8e7;
+    .boxL {
+      width: 50%;
+      text-align: left;
+      font-size: 0.875rem;
+      font-weight: 600;
+      .Lname {
+        padding: 4px 0px;
+      }
+      .Lprice {
+        font-size: 0.625rem;
+        color: #afadad;
+      }
+    }
+    .boxR {
+      width: 20%;
+      color: #ffcc03;
+    }
+  }
 }
 </style>

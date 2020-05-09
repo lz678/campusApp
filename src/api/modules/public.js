@@ -13,7 +13,7 @@ export default{
     //     return axios.get('login',data)
     // }
     userLogin(data){
-        return axios.get('gettest',data)
+        return axios.get('gettest',{params:data})
     }
     // getweaher(data){
     //     return axios.get('https://free-api.heweather.net/s6/weather/now?location=beijing&key=54fe7c4881b942b9b2b32ae14bd7ec54'

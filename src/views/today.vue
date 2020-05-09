@@ -1,13 +1,16 @@
 <template>
   <div class="bbox">
-    <div class="nav">详情</div>
+    <!-- <div class="nav">详情</div> -->
+    <van-nav-bar class="nav" left-arrow @click-left="$router.go(-1)">
+      <div slot="title" class="navtitle">详情</div>
+    </van-nav-bar>
     <div class="mapname">今日气温：体感：{{now.fl}}℃,风向：{{now.wind_dir}}</div>
-     <div class="mapname">当前天气：{{now.cond_txt}},{{now.tmp}}℃</div>
-      <!-- <div class="mapname"> -->
-        <!-- <div class="upnum">风向：{{now.wind_dir}}</div> -->
-        <div class="mapname">风速：{{now.wind_spd}}公里/小时</div>
-        <div class="mapname">空气湿度：{{now.hum}}%</div>
-      <!-- </div> -->
+    <div class="mapname">当前天气：{{now.cond_txt}},{{now.tmp}}℃</div>
+    <!-- <div class="mapname"> -->
+    <!-- <div class="upnum">风向：{{now.wind_dir}}</div> -->
+    <div class="mapname">风速：{{now.wind_spd}}公里/小时</div>
+    <div class="mapname">空气湿度：{{now.hum}}%</div>
+    <!-- </div> -->
     <!-- <div>{{now}}</div> -->
   </div>
 </template>
@@ -18,8 +21,8 @@ import { getStore, setStore } from "@/utils/index.js";
 export default {
   data() {
     return {
-         city: getStore("city").name || "北京",
-         now:''
+      city: getStore("city").name || "北京",
+      now: ""
     };
   },
   methods: {
@@ -76,6 +79,10 @@ export default {
       rgb(251, 215, 134),
       rgb(247, 121, 125)
     );
+    .navtitle {
+      color: #fff;
+      font-weight: 600;
+    }
   }
 }
 .upbox {

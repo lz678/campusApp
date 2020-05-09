@@ -1,6 +1,9 @@
 <template>
   <div class="bbox">
-    <div class="nav">热门景点</div>
+    
+      <van-nav-bar class="nav" left-arrow @click-left="$router.go(-1)">
+      <div slot="title" class="navtitle">热门景点</div>
+    </van-nav-bar>
   </div>
 </template>
 
@@ -33,6 +36,10 @@ export default {
       rgb(251, 215, 134),
       rgb(247, 121, 125)
     );
+     .navtitle {
+      color: #fff;
+      font-weight: 600;
+    }
   }
 }
 </style>

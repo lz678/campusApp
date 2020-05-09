@@ -2,7 +2,7 @@
   <div class="bbox">
     <!-- <div class="nav">历史</div> -->
     <van-nav-bar class="nav" left-arrow @click-left="$router.go(-1)">
-      <div slot="title" class="navtitle">历史上的今天</div>
+      <div slot="title" class="navtitle">联系方式</div>
     </van-nav-bar>
     <div class="list"></div>
   </div>

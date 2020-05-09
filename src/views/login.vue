@@ -12,17 +12,15 @@
       <van-field v-model="value" placeholder="请输入您的验证码" />-->
       <div class="title">登录密码</div>
       <van-field v-model="pwd" type="password" placeholder="请设置您的密码" />
-
       <div class="forget">忘记密码？</div>
     </div>
-
     <!-- </van-cell-group> -->
     <div class="btn" @click="login">登录</div>
   </div>
 </template>
 
 <script>
-import {setStore} from '@/utils/index.js'
+import { setStore } from "@/utils/index.js";
 export default {
   data() {
     return {
@@ -38,25 +36,20 @@ export default {
       this.$api
         .userLogin({
           // get方法
-          params: {
-            account: this.user,
-            password: this.pwd
-          }
-          //post方法
-          //  account: this.user,
-          //   password: this.pwd
+          account: this.user,
+          password: this.pwd
+         
         })
         .then(data => {
           console.log(data);
-          // this.$toast(data.Msg)
           this.$toast({
-            message:data.Msg,
-            duration:1000
-          })
+            message: data.Msg,
+            duration: 1000
+          });
           if (data.code == 1) {
             // this.$toast(data.Msg)
-            setStore('token',123)
-            this.$router.push('/tabbar/campus')
+            setStore("token", 123);
+            this.$router.push("/tabbar/campus");
           }
           // this.$toast(data.Msg)
         });
