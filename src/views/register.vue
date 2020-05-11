@@ -6,19 +6,19 @@
     </div>
     <!-- <van-cell-group> -->
     <div class="inputbox">
-      <div class="title">手机号</div>
-      <van-field v-model="value" placeholder="请输入您的手机号">
-        <template #button>
-          <div class="codebtn">获取验证码</div>
+      <div class="title">学号</div>
+      <van-field v-model="value" placeholder="请输入您的学号">
+        <!-- <template #button>
+          <div class="codebtn">获取验证码</div> -->
           <!-- <van-button size="small" type="primary">发送验证码</van-button> -->
-        </template>
+        <!-- </template> -->
       </van-field>
-      <div class="title">验证码</div>
-      <van-field v-model="value" placeholder="请输入您的验证码" />
+      <!-- <div class="title">验证码</div>
+      <van-field v-model="value" placeholder="请输入您的验证码" /> -->
       <div class="title">密码</div>
       <van-field v-model="value" placeholder="请设置您的密码" />
-      <div class="title">邀请码</div>
-      <van-field v-model="value" placeholder="请输入您的邀请码" />
+      <!-- <div class="title">邀请码</div>
+      <van-field v-model="value" placeholder="请输入您的邀请码" /> -->
       <div></div>
     </div>
 
@@ -66,9 +66,12 @@ export default {
     width: 60%;
     margin: 0 auto;
     margin-top: 60px;
+     font-size: 1.25rem;
+    color: orange;
+    font-weight: 600;
     text-align: right;
-    font-size: 12px;
-    color: #fff;
+    // font-size: 12px;
+    // color: #fff;
   }
   .logobox {
     width: 24%;
@@ -91,14 +94,14 @@ export default {
       margin: 10px auto;
       font-size: 12px;
       text-align: left;
-      color: #fff;
+      // color: #fff;
     }
     .codebtn {
       border-left: 1px solid #b5b5b5;
       font-size: 12px;
       // padding: 4px;
       padding-left: 6px;
-      color: #fff;
+      // color: #fff;
     }
   }
   .btn {

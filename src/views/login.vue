@@ -6,13 +6,16 @@
     </div>
     <!-- <van-cell-group> -->
     <div class="inputbox">
-      <div class="title">账号</div>
+      <div class="title">学号</div>
       <van-field v-model="user" placeholder="请输入您的手机号" />
       <!-- <div class="title">验证码</div>
       <van-field v-model="value" placeholder="请输入您的验证码" />-->
       <div class="title">登录密码</div>
       <van-field v-model="pwd" type="password" placeholder="请设置您的密码" />
-      <div class="forget">忘记密码？</div>
+      <div class="foot">
+        <div class="register" @click="$router.push('/register')">注册</div>
+        <div class="forget" @click="$router.push('/forgetpd')">忘记密码？</div>
+      </div>
     </div>
     <!-- </van-cell-group> -->
     <div class="btn" @click="login">登录</div>
@@ -38,7 +41,6 @@ export default {
           // get方法
           account: this.user,
           password: this.pwd
-         
         })
         .then(data => {
           console.log(data);
@@ -77,8 +79,9 @@ export default {
     margin: 0 auto;
     margin-top: 60px;
     text-align: right;
-    font-size: 12px;
-    color: #fff;
+    font-size: 1.25rem;
+    color: orange;
+    font-weight: 600;
   }
   .logobox {
     width: 24%;
@@ -101,14 +104,27 @@ export default {
       margin: 10px auto;
       font-size: 12px;
       text-align: left;
-      color: #fff;
+      // color: #fff;
     }
-    .forget {
-      width: 88%;
-      margin: 10px auto;
-      font-size: 12px;
-      text-align: right;
-      color: #fff;
+    .foot {
+      display: flex;
+      justify-content: space-around;
+      .register {
+        width: 40%;
+        padding: 6px 0px;
+        // margin: 10px auto;
+        font-size: 12px;
+        text-align: left;
+        color: orange;
+      }
+      .forget {
+        width: 40%;
+        padding: 6px 0px;
+        // margin: 10px auto;
+        font-size: 12px;
+        text-align: right;
+        color: orange;
+      }
     }
   }
   .btn {
