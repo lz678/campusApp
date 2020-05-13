@@ -1,17 +1,35 @@
 <template>
   <div class="bbox">
-   
     <van-nav-bar class="nav" left-arrow @click-left="$router.go(-1)">
       <div slot="title" class="navtitle">推荐音乐</div>
     </van-nav-bar>
+     <div class="content">
+      <div v-for="(item,index) in list" :key="index">
+        <div class="tourname">{{item.name}}</div>
+        <div class="tourdescription">{{item.description}}</div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
-  }
+    return {
+      list:''
+    };
+  },
+  methods: {
+    hotMusic(){
+      this.$api.hotMusic().then(data=>{
+        console.log(data);
+        
+      })
+    }
+  },
+  created() {
+    
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -21,7 +39,7 @@ export default {
 
 .bbox {
   // position: fixed;
-  height: 92vh;
+  height: 100vh;
   background-color: #fff;
   // overflow: scroll;
   .nav {
@@ -40,6 +58,21 @@ export default {
       color: #fff;
       font-weight: 600;
     }
+  }
+  .my-swipe {
+    width: 96%;
+    height: 24vh;
+    margin: 0 auto;
+    margin-top: 1vh;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .content{
+    width: 100%;
+    height: 68vh;
+    overflow: scroll;
   }
 }
 </style>

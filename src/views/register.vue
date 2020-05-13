@@ -7,21 +7,20 @@
     <!-- <van-cell-group> -->
     <div class="inputbox">
       <div class="title">学号</div>
-      <van-field v-model="value" placeholder="请输入您的学号">
+      <van-field v-model="count" placeholder="请输入您的学号">
         <!-- <template #button>
-          <div class="codebtn">获取验证码</div> -->
-          <!-- <van-button size="small" type="primary">发送验证码</van-button> -->
+        <div class="codebtn">获取验证码</div>-->
+        <!-- <van-button size="small" type="primary">发送验证码</van-button> -->
         <!-- </template> -->
       </van-field>
       <!-- <div class="title">验证码</div>
-      <van-field v-model="value" placeholder="请输入您的验证码" /> -->
+      <van-field v-model="value" placeholder="请输入您的验证码" />-->
       <div class="title">密码</div>
-      <van-field v-model="value" placeholder="请设置您的密码" />
+      <van-field v-model="setPd" type="password"  placeholder="请设置您的密码" />
       <!-- <div class="title">邀请码</div>
-      <van-field v-model="value" placeholder="请输入您的邀请码" /> -->
+      <van-field v-model="value" placeholder="请输入您的邀请码" />-->
       <div></div>
     </div>
-
     <!-- </van-cell-group> -->
     <div class="btn" @click="register">注册</div>
   </div>
@@ -31,19 +30,35 @@
 export default {
   data() {
     return {
-      value: "",
+      count: "",
+      setPd: ""
       // bgimg: "url(" + require("@/assets/BJ.png") + ")"
     };
   },
   methods: {
-    register(){
+    register() {
+      let code=this.count&&this.setPd
+      if(!code){
+        return
+      }
       this.$api.userRegister({
-        params:{
-          
+        count:this.count,
+        pd:this.setPd
+      })
+      .then(data=>{
+        console.log(111);
+        
+        this.$toast(data.Msg)
+        if(data.code==1){
+        // this.$toast("此帐号")
+        this.$router.push('/login')
+
         }
+        // console.log(data);
+        
       })
     }
-  },
+  }
 };
 </script>
 
@@ -66,7 +81,7 @@ export default {
     width: 60%;
     margin: 0 auto;
     margin-top: 60px;
-     font-size: 1.25rem;
+    font-size: 1.25rem;
     color: orange;
     font-weight: 600;
     text-align: right;

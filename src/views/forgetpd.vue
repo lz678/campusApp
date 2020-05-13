@@ -7,8 +7,8 @@
     <div class="type">忘记密码</div>
     <!-- <van-cell-group> -->
     <div class="inputbox">
-      <div class="title">手机号</div>
-      <van-field v-model="value" placeholder="请输入您的手机号">
+      <div class="title">学号</div>
+      <van-field v-model="count" placeholder="请输入学号">
         <!-- <template #button>
           <div class="codebtn">获取验证码</div> -->
           <!-- <van-button size="small" type="primary">发送验证码</van-button> -->
@@ -16,14 +16,14 @@
       </van-field>
       <!-- <div class="title">验证码</div>
       <van-field v-model="value" placeholder="请输入您的验证码" /> -->
-      <div class="title">登录密码</div>
-      <van-field v-model="value" placeholder="请输入您的密码" />
+      <div class="title">重设密码</div>
+      <van-field v-model="setPd" type="password" placeholder="请输入重设密码" />
       
       <div></div>
     </div>
 
     <!-- </van-cell-group> -->
-    <div class="btn">确定</div>
+    <div class="btn" @click="changepd">确定</div>
   </div>
 </template>
 
@@ -31,10 +31,24 @@
 export default {
   data() {
     return {
-      value: "",
+       count: "",
+      setPd: ""
       // bgimg: "url(" + require("@/assets/BJ.png") + ")"
     };
-  }
+  },
+  methods: {
+    changepd(){
+      this.$api.userChangepd({
+          user:this.count,
+          pwd:this.setPd
+      }).then(data=>{
+           this.$toast(data.Msg)
+           if(data.code==1){
+             this.$router.push('/login')
+           }
+      })
+    }
+  },
 };
 </script>
 
@@ -44,12 +58,11 @@ export default {
   height: 100vh;
   overflow: scroll;
   position: absolute;
-  //  background-image: url(require('~@/assets/BJ.png'));
-  // background-image: url("~@/assets/BJ.png");
-  // background-repeat: no-repeat;
+  background-color: #fff;
+
+   
   background-position: center;
-  //  background-image: 'url('+require('@/assets/BJ.png')+')';
-  // :style="{backgroundImage:'url('+require('@/assets/BJ.png')+')'}"
+   
   .type {
     width: 60%;
     margin: 0 auto;
