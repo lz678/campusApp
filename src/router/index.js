@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import { getStore } from '@/utils/index.js'
 import { Toast } from 'vant'
 Vue.use(VueRouter)
-
 const routes = [
   {
     path: '/login',
@@ -13,7 +12,6 @@ const routes = [
       name: '登录',
       isOpen: true
     }
-
   },
   {
     path: '/register',
@@ -37,10 +35,6 @@ const routes = [
     path: '/',
     redirect: '/tabbar/campus',
     component: () => import('@/tabbar/index.vue'),
-    // meta:{
-    //   name:'个人',
-    //   isOpen:true
-    // }
   },
   {
     path: '/tabbar',
@@ -74,15 +68,6 @@ const routes = [
           isOpen: true
         }
       },
-      // {
-      //   path: 'mill',
-      //   name: 'mill',
-      //   component: () => import('@/views/mill.vue'),
-      //   meta: {
-      //     name: '矿机',
-      //     isOpen: true
-      //   }
-      // },
       {
         path: 'sale',
         name: 'change',
@@ -92,7 +77,6 @@ const routes = [
           isOpen: true
         }
       },
-
     ]
   },
   {
@@ -142,9 +126,9 @@ const routes = [
 
   },
   {
-    path: '/contact',
-    name: 'contact',
-    component: () => import('@/views/contact.vue'),
+    path: '/saleRule',
+    name: 'saleRule',
+    component: () => import('@/views/saleRule.vue'),
     meta: {
       name: '联系方式',
       isOpen: true
@@ -160,11 +144,11 @@ const routes = [
     }
   },
   {
-    path: '/aboutUs',
-    name: 'aboutUs',
-    component: () => import('@/views/aboutUs.vue'),
+    path: '/safe',
+    name: 'safe',
+    component: () => import('@/views/safe.vue'),
     meta: {
-      name: '关于我们',
+      name: '安全',
       isOpen: true
     }
   },
@@ -174,22 +158,7 @@ VueRouter.prototype.push = function push(location) {
   return routerPush.call(this, location).catch(error => error)
 }
 const router = new VueRouter({
-  // mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
-// 权限配置
-// router.beforeEach((to, from, next) => {
-//   const token=getStore('token')
-
-//  const isOpen = to.meta.isOpen
-// //   const stoToken = store.state.token
-//  if (!isOpen) {
-//    Toast('暂未开放，敬请期待！')
-//    next(false)
-//    console.log(1111);
-//  }else{
-//    next()
-//  }
-// })
 export default router

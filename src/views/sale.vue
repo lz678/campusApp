@@ -7,7 +7,7 @@
     <van-cell-group>
       <van-field v-model="name" label="书籍名称：" placeholder="请输入书籍名称" />
       <van-field v-model="contact" label="联系方式：" placeholder="请输入联系方式" />
-      <van-field v-model="newprice" label="购入价格：" placeholder="请输入购入价格" />
+      <!-- <van-field v-model="newprice" label="购入价格：" placeholder="请输入购入价格" /> -->
       <van-field v-model="oldprice" label="出售价格：" placeholder="请输入出售价格" />
     </van-cell-group>
     <div class="salebtn" @click="send">发布</div>
@@ -18,28 +18,70 @@
 export default {
   data() {
     return {
-      value: 0,
+      value: 1,
       name: "",
       contact: "",
-      newprice: "",
+      // newprice: "",
       oldprice: "",
+       docmHeight: document.documentElement.clientHeight, //默认屏幕高度
+      showHeight: document.documentElement.clientHeight, //实时屏幕高度
+      // hidshow: true, //显示或者隐藏footer,
       option1: [
-        { text: "工学", value: 0 },
-        { text: "理学", value: 1 },
-        { text: "农学", value: 2 },
-        { text: "医学", value: 3 },
-        { text: "经济学", value: 4 },
-        { text: "教育学", value: 5 },
-        { text: "机械学", value: 6 }
+        { text: "工学", value: 1 },
+        { text: "理学", value: 2},
+        { text: "农学", value: 3 },
+        { text: "医学", value: 4 },
+        { text: "经济学", value: 5 },
+        { text: "教育学", value: 6 },
+        { text: "机械学", value: 7 }
       ]
     };
   },
-  methods: {
-    send(){
-      console.log(this.name,this.contact,this.newprice,this.oldprice);
-      this.$toast('发布成功！！！')
-    }
+    mounted() {
+    // window.onresize监听页面高度的变化
+    window.onresize = () => {
+      return (() => {
+        console.log(654);
+        console.log(this.$store.state.hidshow);
+        this.showHeight = document.body.clientHeight;
+      })();
+    };
   },
+  watch: {
+    showHeight: function() {
+      if (this.docmHeight > this.showHeight) {
+        // this.hidshow = false;
+        this.$store.commit('changeShow',false)
+      } else {
+        // this.hidshow = true;
+        this.$store.commit('changeShow',true)
+      }
+    },
+   
+  },
+  methods: {
+    send() {
+      // console.log(this.name, this.contact, this.newprice, this.oldprice);
+      // this.$toast("发布成功！！！");
+      let code=this.value&&this.name&&this.contact&&this.oldprice
+      if(!code){
+        this.$toast('信息不完整！')
+        return 
+      }
+      this.$api
+        .salebook({
+          num: this.value,
+          name:this.name,
+          contact: this.contact,
+          price: this.oldprice
+        })
+         .then(data=>{
+           console.log(data);
+           this.$toast(data.Msg);
+           this.$router.push('/tabbar/bookcase')
+         })
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -51,7 +93,7 @@ export default {
   // position: fixed;
   height: 92vh;
   background-color: #fff;
-  // overflow: scroll;
+  overflow: scroll;
   .nav {
     width: 100%;
     height: 6vh;

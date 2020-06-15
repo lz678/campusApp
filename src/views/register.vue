@@ -13,8 +13,8 @@
         <!-- <van-button size="small" type="primary">发送验证码</van-button> -->
         <!-- </template> -->
       </van-field>
-      <!-- <div class="title">验证码</div>
-      <van-field v-model="value" placeholder="请输入您的验证码" />-->
+      <div class="title">昵称</div>
+      <van-field v-model="nickname" placeholder="请设置您的昵称" />
       <div class="title">密码</div>
       <van-field v-model="setPd" type="password"  placeholder="请设置您的密码" />
       <!-- <div class="title">邀请码</div>
@@ -31,31 +31,28 @@ export default {
   data() {
     return {
       count: "",
-      setPd: ""
+      setPd: "",
+      nickname:''
       // bgimg: "url(" + require("@/assets/BJ.png") + ")"
     };
   },
   methods: {
     register() {
-      let code=this.count&&this.setPd
+      let code=this.count&&this.setPd&&this.nickname
       if(!code){
         return
       }
       this.$api.userRegister({
         count:this.count,
-        pd:this.setPd
+        pd:this.setPd,
+        nickname:this.nickname
       })
       .then(data=>{
-        console.log(111);
-        
         this.$toast(data.Msg)
         if(data.code==1){
         // this.$toast("此帐号")
         this.$router.push('/login')
-
         }
-        // console.log(data);
-        
       })
     }
   }

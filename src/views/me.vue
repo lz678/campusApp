@@ -7,46 +7,47 @@
       </div>
       <div class="headname">
         <!-- <div> -->
-        <span class="nameone">昵称：小汪汪</span>
-        <span class="nametwo">已认证</span>
+        <span class="nameone">昵称：{{nickname}}</span>
+        <!-- <span class="nametwo">已认证</span> -->
         <!-- </div> -->
-        <div class="namethree">ID:1611020013</div>
+        <div class="namethree">ID:{{id}}</div>
       </div>
     </div>
-    <div class="boxtwo">
+    <!-- <div class="boxtwo">
       <div class="two-title">我的资产</div>
       <div class="two-item">金币</div>
       <div class="two-item-num">
         <div>3000.00</div>
         <div class="bgi-fan"></div>
       </div>
-    </div>
+    </div> -->
     <div class="hr"></div>
     <div class="menu">
       <van-cell-group class="cellbox">
-        <van-cell title-class="type" title="联系方式" is-link to="/contact">
+        <van-cell title-class="type" title="规则" is-link to="/saleRule">
           <div slot="icon" class="iconbox">
             <img src="@/assets/me_auth.png" alt />
           </div>
         </van-cell>
-        <!-- <van-cell title-class="type" title="意见反馈" is-link>
+        <van-cell title-class="type" title="安全" is-link to="/safe">
           <div slot="icon" class="iconbox">
             <img src="@/assets/me_fb.png" alt />
           </div>
-        </van-cell> -->
-        <van-cell title-class="type" title="我的设置" is-link to="/set">
-          <div slot="icon" class="iconbox">
-            <img src="@/assets/my_set.png" alt />
-          </div>
         </van-cell>
+         
         <!-- <van-cell title-class="type" title="系统公告" is-link>
           <div slot="icon" class="iconbox">
             <img src="@/assets/xitong.png" alt />
           </div>
-        </van-cell> -->
-        <van-cell title-class="type" title="关于我们" is-link to="/aboutUs">
+        </van-cell>-->
+        <!-- <van-cell title-class="type" title="关于我们" is-link to="/aboutUs">
           <div slot="icon" class="iconbox">
             <img src="@/assets/me_about.png" alt />
+          </div>
+        </van-cell> -->
+        <van-cell title-class="type" title="设置" is-link to="/set">
+          <div slot="icon" class="iconbox">
+            <img src="@/assets/my_set.png" alt />
           </div>
         </van-cell>
         <van-cell title-class="type" title="退出" is-link @click="quite">
@@ -55,79 +56,44 @@
           </div>
         </van-cell>
       </van-cell-group>
-
-      <!-- <div class="menuitem" v-for="(item,index) in menulist" :key="index" @click="clickitem(item)">
-        <img :src="item.img" alt />
-        <div class="menuitem-name">{{item.name}}</div>
-      </div>-->
     </div>
   </div>
 </template>
 
 <script>
-import {removeStore} from '@/utils/index.js'
+import { removeStore, getStore } from "@/utils/index.js";
 export default {
   data() {
     return {
-      menulist: [
-        {
-          // img: require("@/assets/m1.png"),
-          name: "邀请好友"
-        },
-        {
-          // img: require("@/assets/m2.png"),
-          name: "身份认证"
-        },
-        {
-          // img: require("@/assets/m3.png"),
-          name: "转账"
-        },
-        {
-          // img: require("@/assets/m4.png"),
-          name: "收款"
-        },
-        {
-          // img: require("@/assets/m5.png"),
-          name: "推荐有奖"
-        },
-        {
-          // img: require("@/assets/m6.png"),
-          name: "团队"
-        },
-        {
-          // img: require("@/assets/m7.png"),
-          name: "反馈"
-        },
-        {
-          // img: require("@/assets/m8.png"),
-          name: "新手帮助"
-        },
-        {
-          // img: require("@/assets/m9.png"),
-          name: "设置"
-        },
-        {
-          // img: require("@/assets/m10.png"),
-          name: "工会"
-        }
-      ]
+      nickname:'',
+      id:''
     };
   },
   mounted() {},
   methods: {
-    clickitem(item) {
-      alert(item.name);
+    getPersonInfo() {
+      this.$api.getPersonInfo({
+        id: getStore("id")
+      }).then(data=>{
+        if(data.code==1){
+          this.nickname=data.results[0].nickname
+          this.id=data.results[0].user
+        }
+        console.log(data);
+      })
     },
-    quite(){
-      removeStore('token')
-      this.$router.push('/login')
+    quite() {
+      removeStore("token");
+      this.$router.push("/login");
     }
-  }
+  },
+  created() {
+    this.getPersonInfo()
+  },
 };
 </script>
 
 <style lang="scss" scoped>
- 
 .bbox {
   // position: fixed;
   height: 92vh;
@@ -152,6 +118,7 @@ export default {
 }
 .boxone {
   width: 100%;
+  height: 18vh;
   padding: 20px 0px;
   // padding: 10px;
   display: flex;
@@ -166,7 +133,7 @@ export default {
     }
   }
   .headname {
-    padding: 6px;
+    padding: 6px 0px;
     text-align: left;
     .nameone {
       font-size: 12px;

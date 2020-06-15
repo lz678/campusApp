@@ -2,29 +2,39 @@
   <div class="bbox">
     <!-- <div class="nav">历史</div> -->
     <van-nav-bar class="nav" left-arrow @click-left="$router.go(-1)">
-      <div slot="title" class="navtitle">关于我们</div>
+      <div slot="title" class="navtitle">安全</div>
     </van-nav-bar>
-    <div class="list"></div>
+    <div class="list">
+      <div class="safetitle">
+        安全：
+      </div>
+      <div class="text">
+        {{text}}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      text:''
+    };
   },
   methods: {
-    webs(){
-       
-    },
-
-    getinformation() {
-    
+    getsafeinformation() {
+    this.$api.getsafeinformation().then(data=>{
+      if(data.code==1){
+        console.log(data);
+        
+        this.text=data.results[0].text
+      }
+    })
     }
   },
   created() {
-   
-    
+    this.getsafeinformation()
   }
 };
 </script>
@@ -33,6 +43,7 @@ export default {
 .bbox {
   // position: fixed;
   height: 100vh;
+  background-color: #fff;
   overflow: scroll;
   .nav {
     width: 100%;
@@ -54,6 +65,17 @@ export default {
   .list {
     width: 100%;
     height: 94vh;
+    .safetitle{
+      padding:.6rem 0 .375rem 1rem;
+      color: red;
+      text-align: left;
+      // font-size: .9rem;
+    }
+    .text{
+      padding: 1rem;
+      text-align: left;
+      color: red;
+    }
   }
 }
 </style>

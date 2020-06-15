@@ -51,6 +51,7 @@ export default {
           if (data.code == 1) {
             // this.$toast(data.Msg)
             setStore("token", 123);
+            setStore("id", username);
             this.$router.push("/tabbar/campus");
           }
           // this.$toast(data.Msg)

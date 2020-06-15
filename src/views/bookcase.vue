@@ -9,22 +9,23 @@
     <div class="menu">
       <div
         class="menuitem"
+        :class="isactive(item,index)?'active':''"
         v-for="(item,index) in menulist"
         :key="index"
         @click="change(item)"
+          
       >{{item.name}}</div>
     </div>
     <div class="menulist">
-      <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-        <div class="listitem" v-for="(item,index) in list" :key="index" @click="check(item)">
+      <!-- <van-pull-refresh v-model="isLoading" @refresh="onRefresh"> -->
+        <div class="listitem" v-for="(item,index) in list" :key="index">
           <div class="boxL">
             <div class="Lname">{{item.name}}</div>
-            <div class="Lprice">{{item.phone}}</div>
+            <div class="Lprice">{{item.contact}}</div>
           </div>
-
-          <div class="boxR">{{item.price}}</div>
+          <div class="boxR">{{item.price}}元</div>
         </div>
-      </van-pull-refresh>
+      <!-- </van-pull-refresh> -->
     </div>
   </div>
 </template>
@@ -35,6 +36,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      num:1,
       swipe: [
         {
           url: require("@/assets/lunbo.png")
@@ -44,84 +46,52 @@ export default {
         }
       ],
       menulist: [
-        {
-          name: "工学"
-        },
-        {
-          name: "理学"
-        },
-        {
-          name: "农学"
-        },
-        {
-          name: "医学"
-        },
-
-        {
-          name: "机械学"
-        },
-        {
-          name: "经济学"
-        },
-        {
-          name: "教育学"
-        },
-        {
-          name: "哲学"
-        }
+        
       ],
       list: [
-        {
-          name: "马克思主义",
-          phone: 15183848167,
-          price: "10元"
-        },
-        {
-          name: "毛概",
-          phone: 15183848167,
-          price: "10元"
-        },
-        {
-          name: "大学英语（一）",
-          phone: 15183848167,
-          price: "10元"
-        },
-        {
-          name: "大学英语（二）",
-          phone: 15183848167,
-          price: "10元"
-        },
-        {
-          name: "公共体育",
-          phone: 15183848167,
-          price: "10元"
-        },
-        {
-          name: "马克思主义",
-          phone: 15183848167,
-          price: "10元"
-        },
-        {
-          name: "马克思主义",
-          phone: 15183848167,
-          price: "10元"
-        }
+       
       ]
     };
   },
   methods: {
+    isactive(a,b){
+      return b+1==this.num
+    },
     change(item) {
-      console.log(item.name);
+      // console.log(item.name);
+      this.num=item.num
+      this.getbooklist()
     },
-    check(item) {
-      console.log(item);
+    getbooktype(){
+        this.$api.getbooktype({
+
+      }).then(data=>{
+        // console.log(data,"书籍种类");
+        if(data.code==1){
+          this.menulist=data.results
+        }
+      })
     },
-    onRefresh() {
-      this.$toast("刷新成功！");
-      this.isLoading = false;
+    
+    getbooklist(){
+      this.$api.getbooklist({
+        num:this.num
+      }).then(data=>{
+        // console.log(data,"书籍列表");
+        if(data.code===1){
+          this.list=data.results
+        }
+      })
     }
+    // check(item) {
+    //   console.log(item.target);
+    // },
+
   },
-  mounted() {}
+created() {
+  this.getbooktype()
+  this.getbooklist()
+},
 };
 </script>
 
@@ -170,6 +140,9 @@ export default {
     border-radius: 6px;
     font-size: 0.875rem;
     border: 1px solid #ffcc03;
+  }
+  .active{
+    border: 1px solid red;
   }
 }
 .menulist {

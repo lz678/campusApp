@@ -42,7 +42,7 @@ export default {
         { name: "今日天气", path: "/today" },
         { name: "热门景点", path: "/tourism" },
         { name: "推荐歌曲", path: "/music" },
-        { name: "历史上的今天", path: "/history" },
+        // { name: "历史上的今天", path: "/history" },
       ],
       opinionData: [],
       opinion: [],
@@ -66,8 +66,6 @@ export default {
           }
         })
         .then(data => {
-          // console.log(data);
-          // console.log(data.HeWeather6[0].daily_forecast);
           data.HeWeather6[0].daily_forecast.forEach(item => {
             this.opinionData.push(item.tmp_max);
             this.opinion.push(item.date.substr(5));
@@ -79,7 +77,7 @@ export default {
           `https://free-api.heweather.net/s6/weather/now?location=${city}&key=54fe7c4881b942b9b2b32ae14bd7ec54`
         )
         .then(data => {
-          // console.log(data);
+          console.log(data);
           this.now = data.HeWeather6[0].now;
         });
     },
@@ -94,19 +92,13 @@ export default {
           containLabel: true
         },
         //x轴的配置
+        // 校园页面
         xAxis: {
           type: "category",
           // name:"最近三天气温变化",
           // nameLocation: "center",
           data: this.opinion,
           nameRotate: 0,
-          // position:"bottom",
-          // nameTextStyle: {
-          //   color: "#fff"
-          // },
-          // minorTic:{
-          //   show:false
-          // },
           axisLine: {
             lineStyle: {
               color: "#666666",
@@ -120,7 +112,6 @@ export default {
             rotate: 20,
             textStyle: {
               color: "#666"
-              // color: "#FFCC03"
             }
           }
         },
@@ -128,12 +119,10 @@ export default {
           type: "value",
           name: "单位(摄氏度)",
           nameTextStyle: {
-            // color: "#fff",
             fontSize: 10,
             fontWeight: 600
           },
           nameLocation: "end",
-          // position:"right",
           axisLine: {
             lineStyle: {
               color: "#666666",
@@ -146,10 +135,8 @@ export default {
           axisLabel: {
             show: true,
             interval: 2,
-            // rotate: 45,
             textStyle: {
               color: "#666"
-              // color: "#FFCC03"
             }
           }
         },
@@ -163,11 +150,6 @@ export default {
             lineStyle: {
               color: "#FFCC03" //折线的颜色
             }
-            // itemStyle: {
-            //   normal: {
-            //     color: "#fff" //折线点的颜色
-            //   }
-            // }
           }
         ]
       });
@@ -176,10 +158,6 @@ export default {
   mounted() {
     this.getweather(this.city);
     this.drawLine();
-
-    // console.log(getStore("token"));
-    // console.log(this.$route);
-    // this.$toast('暂未开放，敬请期待！')
   }
 };
 </script>
@@ -191,38 +169,23 @@ export default {
   overflow: scroll;
   background-color: #fff;
 }
-// .my-swipe {
-//   width: 96%;
-//   margin: 0 auto;
-//   margin-top: 7vh;
-//   img {
-//     width: 100%;
-//   }
-// }
-* {
-  // color: #fff;
-}
 .nav {
   width: 100%;
   height: 6vh;
   line-height: 6vh;
   color: #fff;
   font-weight: 600;
-  // border-bottom: 1px solid #1B1B21;
-  //  color:orange;
   background: linear-gradient(
     to right,
     rgb(198, 255, 221),
     rgb(251, 215, 134),
     rgb(247, 121, 125)
   );
-  // background-color: #1B1B21;
 }
 #myChart {
   width: 94%;
   height: 40vh;
   margin: 0 auto;
-  // background-color: #1b1b21;
 }
 .mapname {
   font-size: 14px;
@@ -230,7 +193,6 @@ export default {
 }
 .map {
   width: 100%;
-  // background-color: #1b1b21;
   text-align: left;
   border-bottom: 1px solid rgb(251, 215, 134);
 }
@@ -260,24 +222,4 @@ export default {
 .van-cell {
   background: transparent;
 }
-// .upimgbox {
-//   width: 14px;
-//   height: 24px;
-
-//   background-image: url("~@/assets/shujia1.png");
-//   background-position: center;
-//   background-size: cover;
-// }
-// .notice {
-//   width: 40%;
-//   padding: 6px;
-//   span {
-//     font-size: 12px;
-//     padding-left: 4px;
-//     color: #d0cfcf;
-//   }
-// }
-// .van-notice-bar {
-//   background: transparent;
-// }
 </style>

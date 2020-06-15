@@ -64,7 +64,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .bbox {
-  height: 92vh;
+  height: 100vh;
   background-color: #fff;
   // overflow: scroll;
   .nav {

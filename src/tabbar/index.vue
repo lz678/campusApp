@@ -1,15 +1,13 @@
 <template>
   <div class="box">
     <router-view></router-view>
-    <div class="tabbar">
+    <div class="tabbar" v-if="hidshow">
       <div class="tabarbox" v-for="(item,index) in list" :key="index" @click="jump(item)">
-        <!-- <div> -->
-          <div class="imgbox">
-            <img :src="isActive(item)?item.icon:item.xicon" alt />
-          </div>
-          <div class="title" :class="{'fontcolor':isActive(item)}">{{item.name}}</div>
+        <div class="imgbox">
+          <img :src="isActive(item)?item.icon:item.xicon" alt />
         </div>
-      <!-- </div> -->
+        <div class="title" :class="{'fontcolor':isActive(item)}">{{item.name}}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -31,12 +29,7 @@ export default {
           icon: require("@/assets/shujia1.png"),
           xicon: require("@/assets/shujia.png")
         },
-        // {
-        //   name: "矿机",
-        //   path: "/tabbar/mill",
-        //   icon: require("@/assets/33.png"),
-        //   xicon: require("@/assets/3.png")
-        // },
+
         {
           name: "出售",
           path: "/tabbar/sale",
@@ -52,6 +45,11 @@ export default {
       ]
     };
   },
+  computed: {
+    hidshow(){
+      return this.$store.state.hidshow
+    }
+  },
   methods: {
     isActive(item) {
       return this.$route.path === item.path;
@@ -64,7 +62,6 @@ export default {
 </script>
 
  <style lang="scss" scoped>
-  
 .imgbox {
   width: 1.5rem;
   margin: 0 auto;
@@ -73,30 +70,29 @@ export default {
   }
 }
 .box {
-  min-height: 100vh;
+  height: 100vh;
+  background-color: #fff;
+  overflow: scroll;
 }
 .tabbar {
   width: 100%;
   height: 8vh;
   position: fixed;
-  // background-color: #E4F1C6;
-  // background-color: #1B1B21;
   background-color: #fff;
   bottom: 0px;
   border-top: 1px solid #e6e4e4;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  .tabarbox{
-      width: 20%;
+  .tabarbox {
+    width: 20%;
   }
 }
 .title {
   font-family: SourceHanSansCN-Regular;
   font-size: 0.8rem;
-  // color: #fff;
 }
-.fontcolor{
-   color: orange;
- }
+.fontcolor {
+  color: orange;
+}
 </style>
