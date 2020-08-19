@@ -13,7 +13,6 @@
         v-for="(item,index) in menulist"
         :key="index"
         @click="change(item)"
-          
       >{{item.name}}</div>
     </div>
     <div class="menulist">

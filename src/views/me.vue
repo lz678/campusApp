@@ -6,21 +6,10 @@
         <img src="@/assets/auther.png" alt />
       </div>
       <div class="headname">
-        <!-- <div> -->
         <span class="nameone">昵称：{{nickname}}</span>
-        <!-- <span class="nametwo">已认证</span> -->
-        <!-- </div> -->
         <div class="namethree">ID:{{id}}</div>
       </div>
     </div>
-    <!-- <div class="boxtwo">
-      <div class="two-title">我的资产</div>
-      <div class="two-item">金币</div>
-      <div class="two-item-num">
-        <div>3000.00</div>
-        <div class="bgi-fan"></div>
-      </div>
-    </div> -->
     <div class="hr"></div>
     <div class="menu">
       <van-cell-group class="cellbox">
@@ -34,7 +23,7 @@
             <img src="@/assets/me_fb.png" alt />
           </div>
         </van-cell>
-         
+
         <!-- <van-cell title-class="type" title="系统公告" is-link>
           <div slot="icon" class="iconbox">
             <img src="@/assets/xitong.png" alt />
@@ -44,7 +33,7 @@
           <div slot="icon" class="iconbox">
             <img src="@/assets/me_about.png" alt />
           </div>
-        </van-cell> -->
+        </van-cell>-->
         <van-cell title-class="type" title="设置" is-link to="/set">
           <div slot="icon" class="iconbox">
             <img src="@/assets/my_set.png" alt />
@@ -65,22 +54,24 @@ import { removeStore, getStore } from "@/utils/index.js";
 export default {
   data() {
     return {
-      nickname:'',
-      id:''
+      nickname: "",
+      id: ""
     };
   },
   mounted() {},
   methods: {
     getPersonInfo() {
-      this.$api.getPersonInfo({
-        id: getStore("id")
-      }).then(data=>{
-        if(data.code==1){
-          this.nickname=data.results[0].nickname
-          this.id=data.results[0].user
-        }
-        console.log(data);
-      })
+      this.$api
+        .getPersonInfo({
+          id: getStore("id")
+        })
+        .then(data => {
+          if (data.code == 1) {
+            this.nickname = data.results[0].nickname;
+            this.id = data.results[0].user;
+          }
+          console.log(data);
+        });
     },
     quite() {
       removeStore("token");
@@ -88,8 +79,8 @@ export default {
     }
   },
   created() {
-    this.getPersonInfo()
-  },
+    this.getPersonInfo();
+  }
 };
 </script>
 

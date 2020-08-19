@@ -17,7 +17,7 @@ const reg=/^(http|https)/
     
 //     config => {
       
-//       if (!reg.test(config.url)) {
+//       if (!reg.test(config.url))
 //         // config.url = host + '/api/' + config.url
   
 //         let token = getStore('token')

@@ -4,12 +4,9 @@
     <div class="logobox">
       <img src="@/assets/logo.png" alt />
     </div>
-    <!-- <van-cell-group> -->
     <div class="inputbox">
       <div class="title">学号</div>
       <van-field v-model="user" placeholder="请输入您的学号" />
-      <!-- <div class="title">验证码</div>
-      <van-field v-model="value" placeholder="请输入您的验证码" />-->
       <div class="title">登录密码</div>
       <van-field v-model="pwd" type="password" placeholder="请输入您的密码" />
       <div class="foot">
@@ -17,7 +14,6 @@
         <div class="forget" @click="$router.push('/forgetpd')">忘记密码？</div>
       </div>
     </div>
-    <!-- </van-cell-group> -->
     <div class="btn" @click="login">登录</div>
   </div>
 </template>
@@ -33,9 +29,47 @@ export default {
     };
   },
   methods: {
-    login() {
+    // 验证
+    test(){
+      var auth=true;
+      const nameEXP=/[0-9]{10}/;
+      const pwdEXP=/[0-9]{6}/;
       let username = this.user;
       let password = this.pwd;
+      if(username===''){
+        this.$toast({message:"账号不能为空！"});
+        auth=false
+        return false
+      }else if(!nameEXP.test(username)){
+        this.$toast({message:"请输入正确的账号！"});
+        auth=false
+        return false
+      } 
+      if(password===''){
+        this.$toast({message:"密码不能为空！"});
+        auth=false
+        return false
+      }else if(!pwdEXP.test(password)){
+        this.$toast({message:"请输入正确的密码！"});
+        auth=false
+        return false
+      }
+      return auth
+    },
+    // 登录
+    login() {
+      const nameEXP=/[0-9]{10}/;
+      let username = this.user;
+      let password = this.pwd;
+      // nameEXP.test(username)
+      // if(!nameEXP.test(username)){
+      //    return this.$toast({
+      //       message:"账号不正确！"
+      //     });
+      // }
+     const code=this.test()
+     if(!code) return false
+      
       this.$api
         .userLogin({
           // get方法

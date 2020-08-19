@@ -23,25 +23,25 @@ export default {
       contact: "",
       // newprice: "",
       oldprice: "",
-       docmHeight: document.documentElement.clientHeight, //默认屏幕高度
+      docmHeight: document.documentElement.clientHeight, //默认屏幕高度
       showHeight: document.documentElement.clientHeight, //实时屏幕高度
       // hidshow: true, //显示或者隐藏footer,
       option1: [
-        { text: "工学", value: 1 },
-        { text: "理学", value: 2},
-        { text: "农学", value: 3 },
-        { text: "医学", value: 4 },
-        { text: "经济学", value: 5 },
-        { text: "教育学", value: 6 },
-        { text: "机械学", value: 7 }
+        // { text: "工学", value: 1 },
+        // { text: "理学", value: 2},
+        // { text: "农学", value: 3 },
+        // { text: "医学", value: 4 },
+        // { text: "经济学", value: 5 },
+        // { text: "教育学", value: 6 },
+        // { text: "机械学", value: 7 }
       ]
     };
   },
-    mounted() {
+  mounted() {
     // window.onresize监听页面高度的变化
     window.onresize = () => {
       return (() => {
-        console.log(654);
+        // console.log(654);
         console.log(this.$store.state.hidshow);
         this.showHeight = document.body.clientHeight;
       })();
@@ -51,35 +51,63 @@ export default {
     showHeight: function() {
       if (this.docmHeight > this.showHeight) {
         // this.hidshow = false;
-        this.$store.commit('changeShow',false)
+        this.$store.commit("changeShow", false);
       } else {
         // this.hidshow = true;
-        this.$store.commit('changeShow',true)
+        this.$store.commit("changeShow", true);
       }
-    },
-   
+    }
+  },
+  created() {
+    this.getbooktype();
   },
   methods: {
+    // 验证手机号
+    myauth() {
+      let res = true;
+      const contact = this.contact;
+      const phoneEXP = /^1[3456789]\d{9}$/;
+      if (!phoneEXP.test(contact)) {
+        this.$toast({ message: "格式不正确！" });
+        res = false;
+        return false;
+      }
+      return res;
+    },
+
+    getbooktype() {
+      this.$api.getbooktype({}).then(data => {
+        // console.log(data,"书籍种类");
+        if (data.code == 1) {
+          // console.log(data);
+          // console.log(data.results);
+          data.results.forEach(element => {
+            this.option1.push({ text: element.name, value: element.num });
+          });
+        }
+      });
+    },
     send() {
-      // console.log(this.name, this.contact, this.newprice, this.oldprice);
-      // this.$toast("发布成功！！！");
-      let code=this.value&&this.name&&this.contact&&this.oldprice
-      if(!code){
-        this.$toast('信息不完整！')
-        return 
+      let code = this.value && this.name && this.contact && this.oldprice;
+      if (!code) {
+        this.$toast("信息不完整！");
+        return;
+      } else {
+        const mycode = this.myauth();
+        if (!mycode) return false;
       }
       this.$api
         .salebook({
           num: this.value,
-          name:this.name,
+          name: this.name,
           contact: this.contact,
           price: this.oldprice
         })
-         .then(data=>{
-           console.log(data);
-           this.$toast(data.Msg);
-           this.$router.push('/tabbar/bookcase')
-         })
+        .then(data => {
+          console.log(data);
+          this.$toast(data.Msg);
+          this.$router.push("/tabbar/bookcase");
+        });
     }
   }
 };

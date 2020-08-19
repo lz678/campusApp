@@ -7,6 +7,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
+    // component:login
     component: () => import('@/views/login.vue'),
     meta: {
       name: '登录',
