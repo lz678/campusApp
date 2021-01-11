@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       isLoading: false,
-      num:1,
+      num:0,
       swipe: [
         {
           url: require("@/assets/lunbo.png")
@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     isactive(a,b){
-      return b+1==this.num
+      return b==this.num
     },
     change(item) {
       // console.log(item.name);
@@ -68,6 +68,7 @@ export default {
         // console.log(data,"书籍种类");
         if(data.code==1){
           this.menulist=data.results
+          console.log(data.results);
         }
       })
     },

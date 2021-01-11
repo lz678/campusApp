@@ -22,7 +22,7 @@ export default {
     this.$api.getSaleRule().then(data=>{
       console.log(data);
       if(data.code==1){
-        this.rule=data.results[0].rule
+        this.rule=data.results[0].txt
       }
       
     })

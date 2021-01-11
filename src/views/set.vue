@@ -32,7 +32,6 @@ export default {
   },
   methods: {
     getResetNickName() {
-     
       this.$api.getResetNickName({
         nickname:this.setNickName,
         id:getStore('id')
@@ -40,7 +39,9 @@ export default {
         this.$toast(data.Msg)
         if(data.code==1){
           this.setNickName=''
+          this.$router.go(-1)
         }
+        
       })
     },
     reset(){

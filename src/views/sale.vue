@@ -18,7 +18,7 @@
 export default {
   data() {
     return {
-      value: 1,
+      value: 0,
       name: "",
       contact: "",
       // newprice: "",
@@ -88,7 +88,8 @@ export default {
       });
     },
     send() {
-      let code = this.value && this.name && this.contact && this.oldprice;
+        console.log(this.value);
+      let code =this.name && this.contact && this.oldprice;
       if (!code) {
         this.$toast("信息不完整！");
         return;

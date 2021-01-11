@@ -3,19 +3,21 @@
     <div class="nav">校园</div>
 
     <div class="map">
-      <van-button class="city" type="primary" size="mini" to="/changeCity">更换城市({{city}})</van-button>
-      <div class="mapname">当前天气：{{now.cond_txt}},{{now.tmp}}℃</div>
+      <van-button class="city" type="primary" size="mini" to="/changeCity"
+        >更换城市({{ city }})</van-button
+      >
+      <div class="mapname">当前天气：{{ now.cond_txt }},{{ now.tmp }}℃</div>
       <div class="upbox">
-        <div class="upnum">风向：{{now.wind_dir}}</div>
+        <div class="upnum">风向：{{ now.wind_dir }}</div>
 
-        <div class="upnum">空气湿度：{{now.hum}}%</div>
+        <div class="upnum">空气湿度：{{ now.hum }}%</div>
       </div>
       <!-- echarts图表 -->
       <div id="myChart"></div>
     </div>
     <div>
       <van-cell
-        v-for="(item,index) in checklist"
+        v-for="(item, index) in checklist"
         :key="index"
         value="GO!"
         is-link
@@ -24,7 +26,7 @@
       >
         <!-- 使用 title 插槽来自定义标题 -->
         <template slot="title">
-          <div class="custom-title title">{{item.name}}</div>
+          <div class="custom-title title">{{ item.name }}</div>
           <!-- <span class="custom-title title">添加行程</span> -->
         </template>
       </van-cell>
@@ -49,10 +51,16 @@ export default {
       // opinio:[1,2,3],
       now: "",
       weather: "",
-      city: getStore("city").name || "北京"
+      city: getStore("city") || "北京"
     };
   },
+//   computed: {
+//         city:()=>{
+//             return getStore("city").name || "北京"
+//         }
+//     },
   methods: {
+     
     toindex(item) {
       this.$router.push(item.path);
     },
@@ -158,6 +166,8 @@ export default {
   mounted() {
     this.getweather(this.city);
     this.drawLine();
+    console.log(getStore("city"));
+    // console.log({name:"123"})
   }
 };
 </script>

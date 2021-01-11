@@ -440,10 +440,10 @@ export default {
   },
   methods: {
     make(a) {
-      console.log(a);
-      console.log(a[1]);
-      setStore("city", a[1]);
-      console.log(getStore("city").name);
+    //   console.log(a);
+    //   console.log(a[1]);
+      setStore("city", a[1].name);
+      console.log(getStore("city"));
       this.$router.go(-1);
     },
     cancel() {

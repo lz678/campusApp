@@ -27,8 +27,7 @@ export default {
     this.$api.getsafeinformation().then(data=>{
       if(data.code==1){
         console.log(data);
-        
-        this.text=data.results[0].text
+        this.text=data.results[0].txt
       }
     })
     }
