@@ -2,28 +2,30 @@
   <div class="bbox">
     <div class="nav">书架</div>
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-      <van-swipe-item v-for="(item,index) in swipe" :key="index">
+      <van-swipe-item v-for="(item, index) in swipe" :key="index">
         <img :src="item.url" alt />
       </van-swipe-item>
     </van-swipe>
     <div class="menu">
       <div
         class="menuitem"
-        :class="isactive(item,index)?'active':''"
-        v-for="(item,index) in menulist"
+        :class="{ active: isactive(item, index) }"
+        v-for="(item, index) in menulist"
         :key="index"
         @click="change(item)"
-      >{{item.name}}</div>
+      >
+        {{ item.name }}
+      </div>
     </div>
     <div class="menulist">
       <!-- <van-pull-refresh v-model="isLoading" @refresh="onRefresh"> -->
-        <div class="listitem" v-for="(item,index) in list" :key="index">
-          <div class="boxL">
-            <div class="Lname">{{item.name}}</div>
-            <div class="Lprice">{{item.contact}}</div>
-          </div>
-          <div class="boxR">{{item.price}}元</div>
+      <div class="listitem" v-for="(item, index) in list" :key="index" @click="checkDetail(item)">
+        <div class="boxL">
+          <div class="Lname">{{ item.name }}</div>
+          <div class="Lprice">{{ item.contact }}</div>
         </div>
+        <div class="boxR">{{ item.price }}元</div>
+      </div>
       <!-- </van-pull-refresh> -->
     </div>
   </div>
@@ -35,63 +37,65 @@ export default {
   data() {
     return {
       isLoading: false,
-      num:0,
+      num: 0,
       swipe: [
         {
-          url: require("@/assets/lunbo.png")
+          url: require("@/assets/lunbo.png"),
         },
         {
-          url: require("@/assets/lunbo.png")
-        }
+          url: require("@/assets/lunbo.png"),
+        },
       ],
-      menulist: [
-        
-      ],
-      list: [
-       
-      ]
+      menulist: [],
+      list: [],
     };
   },
   methods: {
-    isactive(a,b){
-      return b==this.num
+    isactive(a, b) {
+      return b == this.num;
     },
     change(item) {
       // console.log(item.name);
-      this.num=item.num
-      this.getbooklist()
+      this.num = item.num;
+      this.getbooklist();
     },
-    getbooktype(){
-        this.$api.getbooktype({
-
-      }).then(data=>{
+    getbooktype() {
+      this.$api.getbooktype({}).then((data) => {
         // console.log(data,"书籍种类");
-        if(data.code==1){
-          this.menulist=data.results
+        if (data.code == 1) {
+          this.menulist = data.results;
           console.log(data.results);
         }
-      })
+      });
     },
-    
-    getbooklist(){
-      this.$api.getbooklist({
-        num:this.num
-      }).then(data=>{
-        // console.log(data,"书籍列表");
-        if(data.code===1){
-          this.list=data.results
-        }
-      })
+
+    getbooklist() {
+      this.$api
+        .getbooklist({
+          num: this.num,
+        })
+        .then((data) => {
+          // console.log(data,"书籍列表");
+          if (data.code === 1) {
+            this.list = data.results;
+          console.log(data.results,12);
+
+          }
+        });
+    },
+    checkDetail(item){
+        this.$router.push({
+            path:`/bookDetail/${item.orderid}`,
+        })
     }
     // check(item) {
     //   console.log(item.target);
     // },
-
   },
-created() {
-  this.getbooktype()
-  this.getbooklist()
-},
+  created() {
+    this.getbooktype();
+    this.getbooklist();
+  },
 };
 </script>
 
@@ -141,7 +145,7 @@ created() {
     font-size: 0.875rem;
     border: 1px solid #ffcc03;
   }
-  .active{
+  .active {
     border: 1px solid red;
   }
 }

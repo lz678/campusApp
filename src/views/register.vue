@@ -37,8 +37,43 @@ export default {
     };
   },
   methods: {
+       // 验证
+    test(){
+      var auth=true;
+      const nameEXP=/[0-9]{10}/;
+      const pwdEXP=/[0-9]{6}/;
+      let username = this.count;
+      let password = this.setPd;
+      let nickname=this.nickname
+      if(username===''){
+        this.$toast({message:"账号不能为空！"});
+        auth=false
+        return false
+      }else if(!nameEXP.test(username)){
+        this.$toast({message:"请设置10位数字账号！"});
+        auth=false
+        return false
+      } 
+      if(password===''){
+        this.$toast({message:"密码不能为空！"});
+        auth=false
+        return false
+      }else if(!pwdEXP.test(password)){
+        this.$toast({message:"请设置6位数字密码！"});
+        auth=false
+        return false
+      }
+      if(nickname===''){
+        this.$toast({message:"昵称不能为空！"});
+        auth=false
+        return false
+      } 
+      return auth
+    },
+    //注册
     register() {
-      let code=this.count&&this.setPd&&this.nickname
+    //   let code=this.count&&this.setPd&&this.nickname
+    var code=this.test()
       if(!code){
         return
       }

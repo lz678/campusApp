@@ -96,6 +96,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .bbox {
   width: 100%;
   height: 100vh;

@@ -2,11 +2,18 @@
   <div class="box">
     <router-view></router-view>
     <div class="tabbar" v-if="hidshow">
-      <div class="tabarbox" v-for="(item,index) in list" :key="index" @click="jump(item)">
+      <div
+        class="tabarbox"
+        v-for="(item, index) in list"
+        :key="index"
+        @click="jump(item)"
+      >
         <div class="imgbox">
-          <img :src="isActive(item)?item.icon:item.xicon" alt />
+          <img :src="isActive(item) ? item.icon : item.xicon" alt />
         </div>
-        <div class="title" :class="{'fontcolor':isActive(item)}">{{item.name}}</div>
+        <div class="title" :class="{ fontcolor: isActive(item) }">
+          {{ item.name }}
+        </div>
       </div>
     </div>
   </div>
@@ -21,34 +28,37 @@ export default {
           name: "校园",
           path: "/tabbar/campus",
           icon: require("@/assets/xiaoyuan1.png"),
-          xicon: require("@/assets/xiaoyuan.png")
+          xicon: require("@/assets/xiaoyuan.png"),
         },
         {
           name: "书架",
           path: "/tabbar/bookcase",
           icon: require("@/assets/shujia1.png"),
-          xicon: require("@/assets/shujia.png")
+          xicon: require("@/assets/shujia.png"),
         },
 
         {
           name: "出售",
           path: "/tabbar/sale",
           icon: require("@/assets/zhihuan1.png"),
-          xicon: require("@/assets/zhihuan.png")
+          xicon: require("@/assets/zhihuan.png"),
         },
         {
           name: "个人",
           path: "/tabbar/me",
           icon: require("@/assets/geren1.png"),
-          xicon: require("@/assets/geren.png")
-        }
-      ]
+          xicon: require("@/assets/geren.png"),
+        },
+      ],
+      docmHeight: document.documentElement.clientHeight, //默认屏幕高度
+      showHeight: document.documentElement.clientHeight, //实时屏幕高度
     };
   },
+  
   computed: {
-    hidshow(){
-      return this.$store.state.hidshow
-    }
+    hidshow() {
+      return this.$store.state.hidshow;
+    },
   },
   methods: {
     isActive(item) {
@@ -56,8 +66,8 @@ export default {
     },
     jump(item) {
       this.$router.push(item.path);
-    }
-  }
+    },
+  },
 };
 </script>
 

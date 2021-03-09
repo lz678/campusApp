@@ -60,7 +60,6 @@ export default {
 //         }
 //     },
   methods: {
-     
     toindex(item) {
       this.$router.push(item.path);
     },

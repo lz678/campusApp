@@ -3,11 +3,11 @@ import Router from '@/router/index.js'
 import {getStore,removeStore} from '@/utils/index.js'
 // import {getStore} from '@/utils/index.js'
 //设置全局请求路径
-// axios.defaults.baseURL='http://lzapi.lll1.vip:3000/'
-// axios.defaults.baseURL='http://47.108.58.196:3000/'
-axios.defaults.baseURL='www.runing.xyz:3000/'
-// axios.defaults.baseURL='47.108.58.196:8081/'
-// axios.defaults.baseURL='http://localhost:8082/'
+axios.defaults.baseURL='http://www.runing.xyz:3000/'
+
+
+// axios.defaults.baseURL='47.108.58/'
+axios.defaults.baseURL='http://localhost:3000/'
 // axios.defaults.baseURL='http://yanbiwang.fulishijie.top/api/'
 //设置请求超时时间
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -45,7 +45,6 @@ axios.interceptors.response.use(
             removeStore('token')
             Router.push('/login')
             console.log(data.code);
-            
         }
         else{
             return data

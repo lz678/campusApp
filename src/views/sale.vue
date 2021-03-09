@@ -5,10 +5,22 @@
       <van-dropdown-item v-model="value" :options="option1" />
     </van-dropdown-menu>
     <van-cell-group>
-      <van-field v-model="name" label="书籍名称：" placeholder="请输入书籍名称" />
-      <van-field v-model="contact" label="联系方式：" placeholder="请输入联系方式" />
+      <van-field
+        v-model="name"
+        label="书籍名称："
+        placeholder="请输入书籍名称"
+      />
+      <van-field
+        v-model="contact"
+        label="联系方式："
+        placeholder="请输入联系方式"
+      />
       <!-- <van-field v-model="newprice" label="购入价格：" placeholder="请输入购入价格" /> -->
-      <van-field v-model="oldprice" label="出售价格：" placeholder="请输入出售价格" />
+      <van-field
+        v-model="oldprice"
+        label="出售价格："
+        placeholder="请输入出售价格"
+      />
     </van-cell-group>
     <div class="salebtn" @click="send">发布</div>
   </div>
@@ -34,21 +46,19 @@ export default {
         // { text: "经济学", value: 5 },
         // { text: "教育学", value: 6 },
         // { text: "机械学", value: 7 }
-      ]
+      ],
     };
   },
   mounted() {
     // window.onresize监听页面高度的变化
     window.onresize = () => {
-      return (() => {
-        // console.log(654);
-        console.log(this.$store.state.hidshow);
-        this.showHeight = document.body.clientHeight;
-      })();
+      // console.log(654);
+      //   console.log(this.$store.state.hidshow);
+      this.showHeight = document.body.clientHeight;
     };
   },
   watch: {
-    showHeight: function() {
+    showHeight: function () {
       if (this.docmHeight > this.showHeight) {
         // this.hidshow = false;
         this.$store.commit("changeShow", false);
@@ -56,7 +66,7 @@ export default {
         // this.hidshow = true;
         this.$store.commit("changeShow", true);
       }
-    }
+    },
   },
   created() {
     this.getbooktype();
@@ -76,20 +86,20 @@ export default {
     },
 
     getbooktype() {
-      this.$api.getbooktype({}).then(data => {
+      this.$api.getbooktype({}).then((data) => {
         // console.log(data,"书籍种类");
         if (data.code == 1) {
           // console.log(data);
           // console.log(data.results);
-          data.results.forEach(element => {
+          data.results.forEach((element) => {
             this.option1.push({ text: element.name, value: element.num });
           });
         }
       });
     },
     send() {
-        console.log(this.value);
-      let code =this.name && this.contact && this.oldprice;
+      //   console.log(this.value);
+      let code = this.name && this.contact && this.oldprice;
       if (!code) {
         this.$toast("信息不完整！");
         return;
@@ -97,20 +107,26 @@ export default {
         const mycode = this.myauth();
         if (!mycode) return false;
       }
+      var time = new Date().valueOf();
+      var timestr = time.toString();
+      var orderid = "M" + timestr.substr(-6);
+      //   console.log(orderid);
       this.$api
         .salebook({
           num: this.value,
           name: this.name,
           contact: this.contact,
-          price: this.oldprice
+          price: this.oldprice,
+          orderid: orderid,
         })
-        .then(data => {
+        .then((data) => {
           console.log(data);
           this.$toast(data.Msg);
+          this.$store.commit("changeShow", true);
           this.$router.push("/tabbar/bookcase");
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
