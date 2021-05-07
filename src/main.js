@@ -10,7 +10,6 @@ import api from '@/api/index.js'
 import axios from 'axios'
 //权限配置
 import auth from '@/utils/auth'
-// Vue.use(axios);
 Vue.prototype.axios = axios;
 Vue.use(Vant);
 Vue.config.productionTip = false

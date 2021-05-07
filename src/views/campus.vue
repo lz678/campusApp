@@ -37,6 +37,7 @@
 <script>
 import { getStore, setStore } from "@/utils/index.js";
 import echarts from "echarts";
+// import axios from 'axios'
 export default {
   data() {
     return {
