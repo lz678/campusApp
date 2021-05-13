@@ -33,10 +33,11 @@ export default {
   methods: {
     hotMusic() {
       this.$api.hotMusic().then(data => {
-        console.log(data);
+        console.log(data,"音乐");
         if (data.code == 1) {
           this.swipe = data.data.imglist;
           this.list = data.results;
+          console.log(this.list);
         }
       });
     }

@@ -4,14 +4,7 @@ import {getStore,removeStore} from '@/utils/index.js'
 // import {getStore} from '@/utils/index.js'
 //设置全局请求路径
 axios.defaults.baseURL='http://www.runing.xyz:3000/'
-
-
-// axios.defaults.baseURL='47.108.58/'
-// axios.defaults.baseURL='http://localhost:3000/'
-// axios.defaults.baseURL='http://yanbiwang.fulishijie.top/api/'
 //设置请求超时时间
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
-// axios.defaults.timeout=20000
 const reg=/^(http|https)/
 //axios请求拦截器（request）
 // axios.interceptors.request.use(

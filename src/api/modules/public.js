@@ -1,8 +1,14 @@
 import axios from '@/request/index.js'
+const HTTP=axios.create({
+    baseURL:'http://www.runing.xyz:3000/',
+    timeout: 10000,
+    headers: {
+        // 'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json;charset=utf-8',
+    }
+    // headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+})
 export default{
-    // quiteOrder(data){
-    //     return axios.post('api/index/message',data)
-    // },
     // 用户注册
     userRegister(data){
         return axios.get('register',{params:data})
@@ -52,13 +58,13 @@ export default{
         return axios.get('resetNickName',{params:data})
     },
     // 获取书籍详情
-    getBookDetail(data){
-        return axios.post('bookdetail',data)
-    },
-    // //获取书籍详情
     // getBookDetail(data){
-    //     return axios.get('bookdetail',{params:data})
-    // }
+    //     return HTTP.post('bookdetail',data)
+    // },
+    // //获取书籍详情
+    getBookDetail(data){
+        return axios.get('bookdetail',{params:data})
+    }
     // getweaher(data){
     //     return axios.get('https://free-api.heweather.net/s6/weather/now?location=beijing&key=54fe7c4881b942b9b2b32ae14bd7ec54'
     //     ,{params:data})

@@ -52,8 +52,8 @@ export default {
       // opinio:[1,2,3],
       now: "",
       weather: "",
-      city: getStore("city") || "北京"
-    };
+      city: ("city") || "北京"
+    };getStore
   },
 //   computed: {
 //         city:()=>{

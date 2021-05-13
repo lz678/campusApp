@@ -7,6 +7,9 @@ export default new Vuex.Store({
   state: {
     hidshow:true
   },
+  getters:{
+
+  },
   mutations: {
     changeShow(state,value){
       state.hidshow=value
