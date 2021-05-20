@@ -58,13 +58,13 @@ export default{
         return axios.get('resetNickName',{params:data})
     },
     // 获取书籍详情
-    // getBookDetail(data){
-    //     return HTTP.post('bookdetail',data)
-    // },
-    // //获取书籍详情
     getBookDetail(data){
-        return axios.get('bookdetail',{params:data})
-    }
+        return axios.post('bookdetail',data)
+    },
+    // //获取书籍详情
+    // getBookDetail(data){
+    //     return axios.get('bookdetail',{params:data})
+    // }
     // getweaher(data){
     //     return axios.get('https://free-api.heweather.net/s6/weather/now?location=beijing&key=54fe7c4881b942b9b2b32ae14bd7ec54'
     //     ,{params:data})

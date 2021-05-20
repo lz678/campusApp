@@ -77,7 +77,7 @@ export default {
         .then((data) => {
           // console.log(data,"书籍列表");
           if (data.code === 1) {
-            this.list = data.results;
+            this.list = data.results.reverse();
           console.log(data.results,12);
 
           }
