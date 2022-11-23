@@ -11,7 +11,7 @@ const reg = /^(http|https)/
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
     // console.log(config);
-    config.headers['Access-Control-Allow-origin']="*"
+    // config.headers['Access-Control-Allow-origin']="*"
     // config.headers['Access-Control-Allow-Credentials']="true"
     // config.headers['Access-Control-Allow-Methods']="GET, POST, PUT, DELETE, OPTIONS"
     // config.headers['Access-Control-Allow-Headers']="Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With"

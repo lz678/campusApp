@@ -10,15 +10,15 @@ module.exports = {
     publicPath: './',
     outputDir: 'dist',
     assetsDir: 'static',
-    devServer: {
-        proxy: {
-            '/api': {
-                target: 'http://www.runing.xyz:3000/',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
-            }
-        }
-    }
+    // devServer: {
+    //     proxy: {
+    //         '/api': {
+    //             target: 'http://www.runing.xyz:3000/',
+    //             changeOrigin: true,
+    //             pathRewrite: {
+    //                 '^/api': ''
+    //             }
+    //         }
+    //     }
+    // }
 }
